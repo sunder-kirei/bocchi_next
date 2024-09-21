@@ -1,3 +1,3 @@
 import { META } from "@consumet/extensions";
 
-export const MetaProvider = new META.Myanimelist();
+export const MetaProvider = new META.Anilist();

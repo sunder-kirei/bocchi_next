@@ -1,4 +1,3 @@
-import { AnimeProvider } from "@/lib/api/animeProvider";
 import { InternalServerError } from "@/lib/api/errors";
 import { MetaProvider } from "@/lib/api/metaProvider";
 import { NextRequest, NextResponse } from "next/server";

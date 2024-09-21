@@ -1,6 +1,5 @@
 import { AnimeProvider } from "@/lib/api/animeProvider";
 import { InternalServerError } from "@/lib/api/errors";
-import { StreamingServers } from "@consumet/extensions";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

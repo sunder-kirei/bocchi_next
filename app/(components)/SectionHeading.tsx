@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { ChevronRight } from "lucide-react";
 import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
@@ -17,7 +17,7 @@ export function SectionHeading({
   ...props
 }: Props) {
   return (
-    <>
+    <div className="flex items-end mb-2">
       <Dialog>
         <DialogTrigger asChild>
           <Button
@@ -40,6 +40,6 @@ export function SectionHeading({
       </Dialog>
 
       {children}
-    </>
+    </div>
   );
 }

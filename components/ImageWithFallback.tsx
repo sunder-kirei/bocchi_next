@@ -1,16 +1,16 @@
 "use client";
 
-import React, { HTMLAttributes, useState } from "react";
-import Image, { ImageProps } from "next/image";
+import { ImgHTMLAttributes, useState } from "react";
 
-interface Props extends ImageProps {}
+type Props = ImgHTMLAttributes<HTMLImageElement> & {};
 
-export function ImageWithFallback({ src, ...props }: Props) {
+export function ImageWithFallback({ src, alt, ...props }: Props) {
   const [imgSrc, setImgSrc] = useState(src);
 
   return (
-    <Image
+    <img
       src={imgSrc}
+      alt={alt}
       onError={() => {
         setImgSrc("/404.png");
       }}

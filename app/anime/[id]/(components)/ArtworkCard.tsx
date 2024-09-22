@@ -1,5 +1,4 @@
 import ImageWithFallback from "@/components/ImageWithFallback";
-import { Anime } from "@/types/api/anime";
 import { Artwork } from "@/types/api/info";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
@@ -25,9 +24,8 @@ export function ArtworkCard({ className, style, art, color, ...props }: Props) {
       <ImageWithFallback
         src={art.img}
         alt={art.type}
-        fill={true}
         title={art.img}
-        className="object-contain"
+        className="object-contain h-full w-full"
       />
     </div>
   );

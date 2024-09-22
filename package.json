@@ -21,6 +21,7 @@
     "embla-carousel": "^8.3.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-react": "^8.3.0",
+    "hls.js": "^1.5.15",
     "husky": "^9.1.6",
     "lucide-react": "^0.441.0",
     "next": "14.2.13",

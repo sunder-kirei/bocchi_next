@@ -34,19 +34,6 @@ function NavTile({
 function NavBar({ className, ...props }: HTMLAttributes<HTMLElement>) {
   const [link, setLink] = useState("");
 
-  useEffect(() => {
-    function set() {
-      const id = window.location.href.split("#");
-      if (id.length > 1) setLink(id[1]);
-    }
-    window.addEventListener("popstate", set);
-    set();
-
-    return () => {
-      window.removeEventListener("popstate", set);
-    };
-  }, []);
-
   return (
     <nav
       className={twMerge(
@@ -55,14 +42,14 @@ function NavBar({ className, ...props }: HTMLAttributes<HTMLElement>) {
       )}
       {...props}
     >
-      <NavTile href="#home" active={`#${link}` === "#home" || link === ""}>
+      <NavTile href="/" active={`${link}` === "/" || link === ""}>
         <House />
         Home
       </NavTile>
-      <NavTile href="#projects" active={`#${link}` === "#projects"}>
+      <NavTile href="/search" active={`${link}` === "/search"}>
         <Search />
       </NavTile>
-      <NavTile href="#connect" active={`#${link}` === "#connect"}>
+      <NavTile href="/my-list" active={`${link}` === "/my-list"}>
         <Scroll />
         My List
       </NavTile>

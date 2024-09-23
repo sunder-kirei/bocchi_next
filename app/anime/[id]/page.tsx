@@ -3,7 +3,6 @@ import { SectionHeading } from "@/app/(components)/SectionHeading";
 import { Page } from "@/components/layout/Page";
 import { DialogContent } from "@/components/ui/dialog";
 import { fetchInfo } from "@/lib/query/fetchInfo";
-import Link from "next/link";
 import React from "react";
 import { ArtworkCard } from "./(components)/ArtworkCard";
 import { ArtworkGrid } from "./(components)/ArtWorkGrid";
@@ -34,12 +33,12 @@ export default async function InfoPage({
 
         {/* Start Watching */}
         <WatchingStatus anime={anime} />
-        <Link
+        {/* <a
           href={``}
           className="px-4 py-2 w-full rounded-md mt-2 text-xl text-white text-center flex gap-x-2 items-center justify-center bg-accent"
         >
           Add to list
-        </Link>
+        </a> */}
 
         <SectionHeading title="Description" className="mt-4 mb-2" />
         <p

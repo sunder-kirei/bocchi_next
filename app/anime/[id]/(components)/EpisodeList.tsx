@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/select";
 import { AnimeInfo } from "@/types/api/info";
 import Image from "next/image";
-import Link from "next/link";
+import a from "next/link";
 import { HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -46,7 +46,7 @@ export function EpisodeList({
             <SelectTrigger className="w-fit ml-auto">
               <SelectValue placeholder="Select episodes" />
             </SelectTrigger>
-            <SelectContent className="z-100 bg-white">
+            <SelectContent className="z-100">
               {Array.from({ length: pages }, (_, idx) => {
                 return (
                   <SelectItem value={idx.toString()} key={idx}>
@@ -63,7 +63,7 @@ export function EpisodeList({
           .slice(page * 100, (page + 1) * 100)
           .reverse()
           .map((episode) => (
-            <Link
+            <a
               key={episode.id}
               href={`/anime/${anime.id}/watch/${episode.id}`}
               className={twMerge(
@@ -88,7 +88,7 @@ export function EpisodeList({
                 />
               </div>
               <div className="px-4 py-2 text-xl">Episode {episode.number}</div>
-            </Link>
+            </a>
           ))}
       </div>
     </>

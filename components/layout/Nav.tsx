@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView } from "@/hooks/useInView";
-import { House, Scroll, Search } from "lucide-react";
+import { House, Search } from "lucide-react";
 import {
   AnchorHTMLAttributes,
   HTMLAttributes,
@@ -73,11 +73,6 @@ function NavBar({
       >
         <Search />
       </Button>
-
-      <NavTile href="/my-list" active={`${link}` === "/my-list"}>
-        <Scroll />
-        My List
-      </NavTile>
     </nav>
   );
 }

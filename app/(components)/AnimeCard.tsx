@@ -1,5 +1,5 @@
 import { Anime } from "@/types/api/anime";
-import Link from "next/link";
+import a from "next/link";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -10,7 +10,7 @@ interface Props extends Omit<HTMLAttributes<HTMLElement>, "children"> {
 
 export function AnimeCard({ className, style, anime, href, ...props }: Props) {
   return (
-    <Link
+    <a
       href={href || `/anime/${anime.id}`}
       className={twMerge(
         "basis-36 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
@@ -59,6 +59,6 @@ export function AnimeCard({ className, style, anime, href, ...props }: Props) {
           ))}
         </div>
       </div>
-    </Link>
+    </a>
   );
 }

@@ -1,5 +1,5 @@
 import { Recommendation } from "@/types/api/info";
-import Link from "next/link";
+import a from "next/link";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -13,7 +13,7 @@ export function RecommendationCard({
   ...props
 }: Props) {
   return (
-    <Link
+    <a
       href={`/anime/${recommendation.id}`}
       className={twMerge(
         "basis-36 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
@@ -38,6 +38,6 @@ export function RecommendationCard({
           </span>
         </div>
       </div>
-    </Link>
+    </a>
   );
 }

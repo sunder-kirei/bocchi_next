@@ -18,7 +18,9 @@ export function HistorySection({ className, ...props }: Props) {
 
   useEffect(() => {
     async function getHistory() {
-      const data = await db.history.toArray();
+      const data = (await db.history.toArray()).sort(
+        (a, b) => b.timestamp.getTime() - a.timestamp.getTime()
+      );
       return data;
     }
     setIsLoading(true);

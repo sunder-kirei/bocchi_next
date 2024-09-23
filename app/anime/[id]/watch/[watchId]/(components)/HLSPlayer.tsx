@@ -42,6 +42,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
           animeID,
           episode,
           episodeID,
+          timestamp: new Date(),
         });
         return dbID;
       } catch (err) {
@@ -73,9 +74,11 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
         }
       });
 
-      const keyListeners: (this: Document, ev: KeyboardEvent) => void = (e) => {
+      const keyListeners: (
+        this: HTMLVideoElement,
+        ev: KeyboardEvent
+      ) => void = (e) => {
         e.preventDefault();
-        e.stopPropagation();
         if (e.key === "f") {
           if (document.fullscreenElement) {
             document.exitFullscreen();
@@ -99,11 +102,13 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
         }
       };
 
-      document.addEventListener("keydown", keyListeners);
+      videoRef.current.addEventListener("keydown", keyListeners);
 
       return () => {
         hls.destroy();
-        document.removeEventListener("keydown", keyListeners);
+        if (videoRef.current) {
+          videoRef.current.removeEventListener("keydown", keyListeners);
+        }
       };
     } else if (videoRef.current) {
       // For browsers that support HLS natively (like Safari)

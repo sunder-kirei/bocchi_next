@@ -3,8 +3,8 @@ import { InternalServerError } from "@/lib/api/errors";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
+  const id = req.nextUrl.searchParams.get("id");
   try {
-    const id = req.nextUrl.searchParams.get("id");
     if (!id) {
       throw "id not found";
     }

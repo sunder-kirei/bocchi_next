@@ -3,9 +3,9 @@ import { InternalServerError } from "@/lib/api/errors";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
+  const page = Number(req.nextUrl.searchParams.get("page") ?? "1");
+  const genre = req.nextUrl.searchParams.get("genre");
   try {
-    const page = Number(req.nextUrl.searchParams.get("page") ?? "1");
-    const genre = req.nextUrl.searchParams.get("genre");
     if (!genre) {
       throw "genre not found";
     }

@@ -53,8 +53,6 @@ export function AppCommandDialog({ open, setOpen }: Props) {
     }
   }, [query]);
 
-  console.log(results?.results);
-
   return (
     <>
       <CommandDialog open={open} onOpenChange={setOpen}>

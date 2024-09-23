@@ -3,10 +3,9 @@ import { MetaProvider } from "@/lib/api/metaProvider";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
+  const id = req.nextUrl.searchParams.get("id");
+  const page = req.nextUrl.searchParams.get("page") ?? "1";
   try {
-    const id = req.nextUrl.searchParams.get("id");
-    const page = req.nextUrl.searchParams.get("page") ?? "1";
-
     if (!id) {
       throw "id not found";
     }

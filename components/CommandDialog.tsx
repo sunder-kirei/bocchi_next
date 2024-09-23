@@ -1,17 +1,14 @@
 "use client";
 
 import debouce from "lodash.debounce";
-import { CreditCard, Loader2, Settings, User } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 import {
   CommandDialog,
-  CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-  CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 import { fetchSearch } from "@/lib/query/fetchSearch";
 import { Search } from "@/types/api/search";

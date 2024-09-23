@@ -9,7 +9,7 @@ import { twMerge } from "tailwind-merge";
 import { fetchInfoOnly } from "@/lib/query/fetchInfoOnly";
 import { SectionHeading } from "./SectionHeading";
 
-interface Props extends HTMLAttributes<HTMLElement> {}
+type Props = HTMLAttributes<HTMLElement> & {};
 
 export function HistorySection({ className, ...props }: Props) {
   const [animes, setAnimes] = useState<Anime[]>([]);

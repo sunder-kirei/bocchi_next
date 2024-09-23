@@ -79,7 +79,7 @@ export default async function WatchPage({
               {anime.genres.slice(0, 2).map((genre) => (
                 <div
                   key={genre}
-                  className="sm:px-4 sm:py-2 px-1 py-2 text-xs sm:text-sm bg-primary rounded-full w-fit"
+                  className="sm:px-4 sm:py-2 px-2 py-1 text-xs sm:text-sm bg-primary rounded-full w-fit"
                 >
                   {genre}
                 </div>

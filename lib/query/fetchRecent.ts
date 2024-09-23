@@ -6,7 +6,7 @@ export async function fetchRecent() {
   const raw = await MetaProvider.fetchRecentEpisodes("gogoanime", 1, 10);
   const promises: Promise<IAnimeInfo>[] = [];
   raw.results.forEach((anime) => {
-    promises.push(MetaProvider.fetchAnimeInfo(anime.id));
+    promises.push(MetaProvider.fetchAnilistInfoById(anime.id));
   });
   const info = await Promise.all(promises);
 

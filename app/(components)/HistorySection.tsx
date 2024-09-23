@@ -23,7 +23,8 @@ export function HistorySection({ className, ...props }: Props) {
     }
     setIsLoading(true);
     getHistory()
-      .then((data) => {
+      .then((_data) => {
+        const data = _data.slice(0, 10);
         setHistories(data);
         const promises = data.map((h) => fetchInfoOnly(h.animeID));
         Promise.all(promises)
@@ -40,7 +41,7 @@ export function HistorySection({ className, ...props }: Props) {
     animes.length > 0 && (
       <>
         <SectionHeading title="History" />
-        <Section className={twMerge("", className)} {...props}>
+        <Section className={twMerge("justify-start", className)} {...props}>
           {animes.map((anime) => {
             const history = histories.find((h) => h.animeID === anime.id);
             const href = history

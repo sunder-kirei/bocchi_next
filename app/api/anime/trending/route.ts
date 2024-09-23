@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
     const data = await MetaProvider.fetchTrendingAnime(page);
     return NextResponse.json(data);
   } catch (err) {
+    console.log(err);
     return InternalServerError(err);
   }
 }

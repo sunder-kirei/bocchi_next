@@ -39,7 +39,7 @@ export function AppCommandDialog({ open, setOpen }: Props) {
 
     window.addEventListener("keydown", down);
     return () => window.removeEventListener("keydown", down);
-  }, []);
+  }, [setOpen]);
 
   useEffect(() => {
     if (query !== "") {

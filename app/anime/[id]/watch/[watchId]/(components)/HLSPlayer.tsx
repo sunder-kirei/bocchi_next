@@ -67,7 +67,9 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
       hls.on(Hls.Events.MEDIA_ATTACHED, async () => {
         if (videoRef.current) {
           const duration = await getDuration();
-          videoRef.current.currentTime = duration?.duration ?? 0;
+          if (duration?.episodeID === episodeID) {
+            videoRef.current.currentTime = duration?.duration ?? 0;
+          }
         }
       });
 

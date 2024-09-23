@@ -2,7 +2,7 @@ import { Recent } from "@/types/api/recent";
 import { MetaProvider } from "../api/metaProvider";
 
 export async function fetchRecent() {
-  const raw = await MetaProvider.fetchRecentEpisodes("gogoanime", 1, 10);
+  const raw = await MetaProvider.fetchRecentEpisodes("gogoanime", 1, 5);
   console.dir({ raw });
 
   const data = [] as Recent[];

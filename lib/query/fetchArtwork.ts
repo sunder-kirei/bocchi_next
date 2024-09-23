@@ -1,5 +1,4 @@
 import { Artwork } from "@/types/api/info";
-import { Recent } from "@/types/api/recent";
 
 export async function fetchArtwork(id: string, page: number = 1) {
   const res = await fetch(

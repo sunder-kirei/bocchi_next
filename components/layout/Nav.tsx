@@ -10,6 +10,8 @@ import {
   useState,
 } from "react";
 import { twMerge } from "tailwind-merge";
+import { AppCommandDialog } from "../CommandDialog";
+import { Button } from "../ui/button";
 
 function NavTile({
   className,
@@ -31,8 +33,25 @@ function NavTile({
   );
 }
 
-function NavBar({ className, ...props }: HTMLAttributes<HTMLElement>) {
+function NavBar({
+  className,
+  onClick,
+  ...props
+}: HTMLAttributes<HTMLElement> & { onClick: () => void }) {
   const [link, setLink] = useState("");
+
+  useEffect(() => {
+    function set() {
+      const id = window.location.href.split("#");
+      if (id.length > 1) setLink(id[1]);
+    }
+    window.addEventListener("popstate", set);
+    set();
+
+    return () => {
+      window.removeEventListener("popstate", set);
+    };
+  }, []);
 
   return (
     <nav
@@ -46,9 +65,15 @@ function NavBar({ className, ...props }: HTMLAttributes<HTMLElement>) {
         <House />
         Home
       </NavTile>
-      <NavTile href="/search" active={`${link}` === "/search"}>
+      <Button
+        variant="ghost"
+        className="rounded-full"
+        size="icon"
+        onClick={onClick}
+      >
         <Search />
-      </NavTile>
+      </Button>
+
       <NavTile href="/my-list" active={`${link}` === "/my-list"}>
         <Scroll />
         My List
@@ -58,30 +83,42 @@ function NavBar({ className, ...props }: HTMLAttributes<HTMLElement>) {
 }
 
 export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
+  const [open, setOpen] = useState(false);
+
   const ref = useRef(null);
   const isInView = useInView(ref, {
     amount: 0.6,
   });
 
-  return (
-    <div
-      className={twMerge("w-full h-fit z-[1000]", className)}
-      {...props}
-      ref={ref}
-    >
-      <NavBar
-        className={twMerge(
-          "",
-          !isInView ? "opacity-0 -translate-y-32 scale-0" : "scale-100"
-        )}
-      />
+  function handleSearch() {
+    setOpen(true);
+  }
 
-      <NavBar
-        className={twMerge(
-          "fixed bottom-2 w-fit left-1/2 -translate-x-1/2 rounded-full bg-white shadow-secondary shadow-lg",
-          isInView ? "opacity-0  translate-y-32 scale-0" : "scale-100"
-        )}
-      />
-    </div>
+  return (
+    <>
+      <AppCommandDialog open={open} setOpen={setOpen} />
+
+      <div
+        className={twMerge("w-full h-fit z-[1000]", className)}
+        {...props}
+        ref={ref}
+      >
+        <NavBar
+          className={twMerge(
+            "",
+            !isInView ? "opacity-0 -translate-y-32 scale-0" : "scale-100"
+          )}
+          onClick={handleSearch}
+        />
+
+        <NavBar
+          className={twMerge(
+            "fixed bottom-2 w-fit left-1/2 -translate-x-1/2 rounded-full bg-background shadow-secondary shadow",
+            isInView ? "opacity-0  translate-y-32 scale-0" : "scale-100"
+          )}
+          onClick={handleSearch}
+        />
+      </div>
+    </>
   );
 }

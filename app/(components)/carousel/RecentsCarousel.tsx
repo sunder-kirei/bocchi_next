@@ -8,6 +8,7 @@ import useEmbla from "embla-carousel-react";
 import { HTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { DotButton, useDotButton } from "./DotButtons";
+import Link from "next/link";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   recents: Recent[];
@@ -48,7 +49,8 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
       >
         <div className="flex touch-pan-y touch-pinch-zoom h-full w-full gap-x-8">
           {recents.map((anime, index) => (
-            <div
+            <Link
+              href={`/anime/${anime.id}/watch/${anime.episodeId}`}
               key={index}
               className="basis-full grow-0 shrink-0 rounded-sm p-2 w-full"
             >
@@ -92,7 +94,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

@@ -3,18 +3,16 @@ import { SectionHeading } from "@/app/(components)/SectionHeading";
 import { Page } from "@/components/layout/Page";
 import { DialogContent } from "@/components/ui/dialog";
 import { fetchInfo } from "@/lib/query/fetchInfo";
-import { format } from "date-fns";
 import Link from "next/link";
 import React from "react";
 import { ArtworkCard } from "./(components)/ArtworkCard";
-import { CharacterCard } from "./(components)/CharacterCard";
-import { EpisodeList } from "./(components)/EpisodeList";
-import { RecommendationCard } from "./(components)/RecommendationCard";
-import { RelationCard } from "./(components)/RelationCard";
-import Image from "next/image";
 import { ArtworkGrid } from "./(components)/ArtWorkGrid";
 import { Banner } from "./(components)/Banner";
+import { CharacterCard } from "./(components)/CharacterCard";
+import { EpisodeList } from "./(components)/EpisodeList";
 import { Hero } from "./(components)/Hero";
+import { RecommendationCard } from "./(components)/RecommendationCard";
+import { RelationCard } from "./(components)/RelationCard";
 import { Summary } from "./(components)/Summary";
 
 export default async function InfoPage({
@@ -25,7 +23,7 @@ export default async function InfoPage({
   const anime = await fetchInfo(id);
 
   return (
-    <Page className="px-0 pb-24">
+    <Page className="px-0">
       <Banner anime={anime} />
       <main className="max-w-screen-lg mx-auto w-full px-4">
         <div className="w-full flex">
@@ -61,7 +59,7 @@ export default async function InfoPage({
           title="Relations"
           className="mt-4 mb-2"
           dialogContent={
-            <DialogContent className="bg-white flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
               {anime.relations.map((relation) => (
                 <RelationCard relation={relation} key={relation.id} />
               ))}
@@ -84,7 +82,7 @@ export default async function InfoPage({
           title="Characters"
           className="mt-4 mb-2"
           dialogContent={
-            <DialogContent className="bg-white flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
               {anime.characters.map((character) => (
                 <CharacterCard character={character} key={character.id} />
               ))}
@@ -101,7 +99,7 @@ export default async function InfoPage({
           title="Recommendations"
           className="mt-4 mb-2"
           dialogContent={
-            <DialogContent className="bg-white flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
               {anime.recommendations.map((recommendation) => (
                 <RecommendationCard
                   recommendation={recommendation}
@@ -125,7 +123,7 @@ export default async function InfoPage({
           className="mt-4 mb-2"
           dialogContent={
             <DialogContent
-              className="bg-white max-h-[80%] h-full max-w-[80%] w-full overflow-y-auto scrollbar-thin scrollbar-track-white"
+              className="max-h-[80%] h-full max-w-[80%] w-full overflow-y-auto scrollbar-none"
               style={
                 {
                   "--scrollbar-thumb": `${anime.color}`,

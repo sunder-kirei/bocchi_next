@@ -1,16 +1,10 @@
 "use client";
 
-import React, {
-  HTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-  VideoHTMLAttributes,
-} from "react";
-import Hls from "hls.js";
-import { twMerge } from "tailwind-merge";
-import { Watch } from "@/types/api/watch";
 import { Button } from "@/components/ui/button";
+import { Watch } from "@/types/api/watch";
+import Hls from "hls.js";
+import React, { HTMLAttributes, useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface HLSPlayerProps extends HTMLAttributes<HTMLElement> {
   data: Watch;
@@ -52,7 +46,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
       // For browsers that support HLS natively (like Safari)
       videoRef.current.src = src;
     }
-  }, [src]);
+  }, [src, data]);
 
   return (
     <div

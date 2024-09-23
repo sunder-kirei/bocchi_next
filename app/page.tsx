@@ -33,8 +33,6 @@ export default async function Home() {
           ))}
         </Section>
       </main>
-
-      <div className="temp w-full h-96"></div>
     </Page>
   );
 }

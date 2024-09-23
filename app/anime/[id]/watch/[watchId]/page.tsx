@@ -1,12 +1,11 @@
-import { Page } from "@/components/layout/Page";
-import { fetchWatch } from "@/lib/query/fetchWatch";
-import { HLSPlayer } from "./(components)/HLSPlayer";
 import { Hero } from "@/app/anime/[id]/(components)/Hero";
+import { Page } from "@/components/layout/Page";
 import { fetchInfo } from "@/lib/query/fetchInfo";
-import { EpisodeList } from "../../(components)/EpisodeList";
-import { Summary } from "../../(components)/Summary";
-import { twMerge } from "tailwind-merge";
+import { fetchWatch } from "@/lib/query/fetchWatch";
 import { format } from "date-fns";
+import { twMerge } from "tailwind-merge";
+import { EpisodeList } from "../../(components)/EpisodeList";
+import { HLSPlayer } from "./(components)/HLSPlayer";
 
 export default async function WatchPage({
   params: { id, watchId },
@@ -18,11 +17,16 @@ export default async function WatchPage({
   const currentEpisode = anime.episodes.find((e) => e.id === watchId)?.number;
 
   return (
-    <Page className="max-w-screen-lg pb-32">
+    <Page className="max-w-screen-lg">
       <HLSPlayer data={data} className="mx-auto" />
       <main className="mt-4">
         <div className="flex">
-          <Hero color={anime.color} image={anime.image} className="w-44" />
+          <Hero
+            color={anime.color}
+            image={anime.image}
+            className="w-44"
+            id={anime.id}
+          />
           <div
             className={twMerge("py-4 px-6 w-full flex flex-col h-fit")}
             style={{

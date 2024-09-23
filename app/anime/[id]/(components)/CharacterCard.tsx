@@ -11,7 +11,7 @@ export function CharacterCard({ className, character, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "basis-96 h-32 grow-0 shrink-0 shadow-lg shadow-secondary rounded-md overflow-hidden flex",
+        "basis-96 h-32 grow-0 shrink-0 shadow shadow-secondary rounded-md overflow-hidden flex",
         className
       )}
       {...props}

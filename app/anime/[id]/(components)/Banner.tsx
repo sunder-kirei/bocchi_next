@@ -1,10 +1,8 @@
-import { HTMLAttributes } from "react";
-import { twMerge } from "tailwind-merge";
-import Image from "next/image";
-import { Anime } from "@/types/api/anime";
+import ImageWithFallback from "@/components/ImageWithFallback";
 import { AnimeInfo } from "@/types/api/info";
 import { format } from "date-fns";
-import ImageWithFallback from "@/components/ImageWithFallback";
+import { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   anime: AnimeInfo;
@@ -17,6 +15,7 @@ export function Banner({ className, anime, ...props }: Props) {
         "w-full h-72 relative flex items-end justify-end p-2 gap-2 bg-black/30",
         className
       )}
+      {...props}
     >
       <div className="absolute -z-10 w-full h-full top-0 left-0">
         <ImageWithFallback

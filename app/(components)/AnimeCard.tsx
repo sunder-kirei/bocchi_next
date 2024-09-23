@@ -12,13 +12,14 @@ export function AnimeCard({ className, style, anime, ...props }: Props) {
     <Link
       href={`/anime/${anime.id}`}
       className={twMerge(
-        "basis-52 grow-0 shrink-0 shadow-lg shadow-primary rounded-md overflow-hidden",
+        "basis-40 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
         className
       )}
       key={anime.id}
       style={
         {
           "--tw-shadow-color": anime.color,
+          "--tw-ring-color": anime.color,
           color: anime.color,
           "--tw-shadow": "var(--tw-shadow-colored)",
           ...style,
@@ -34,9 +35,11 @@ export function AnimeCard({ className, style, anime, ...props }: Props) {
       ></div>
       <div className="w-full p-4 flex flex-col items-center gap-y-1">
         <div className="w-full flex items-center justify-between ">
-          <span className="line-clamp-1">{anime.title.userPreferred}</span>
+          <span className="line-clamp-2 sm:line-clamp-1">
+            {anime.title.userPreferred}
+          </span>
           <span
-            className="text-white px-2 py-1 rounded"
+            className="text-white px-2 py-1 rounded hidden sm:inline"
             style={{
               backgroundColor: anime.color,
             }}
@@ -44,7 +47,7 @@ export function AnimeCard({ className, style, anime, ...props }: Props) {
             {anime.type}
           </span>
         </div>
-        <div className="w-full flex flex-wrap items-center gap-2 text-xs ">
+        <div className="w-full flex-wrap items-center gap-2 text-xs hidden sm:flex">
           {anime.genres.slice(0, 2).map((genre) => (
             <div
               className="text-white px-2 py-1 rounded bg-primary"

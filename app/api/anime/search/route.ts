@@ -12,6 +12,7 @@ export async function GET(req: NextRequest) {
     const data = await MetaProvider.search(query, page);
     return NextResponse.json(data);
   } catch (err) {
+    console.error(err);
     return InternalServerError(err);
   }
 }

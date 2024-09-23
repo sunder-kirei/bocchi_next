@@ -7,7 +7,7 @@ export function Section({ className, ...props }: Props) {
   return (
     <section
       className={twMerge(
-        "flex flex-wrap sm:flex-nowrap gap-4 justify-start overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-accent pb-4 px-2 scrollbar-corner-transparent",
+        "flex flex-wrap sm:flex-nowrap px-2 gap-4 justify-center sm:justify-start overflow-x-auto scrollbar-none scrollbar-track-transparent scrollbar-thumb-accent pb-4 scrollbar-corner-transparent",
         className
       )}
       {...props}

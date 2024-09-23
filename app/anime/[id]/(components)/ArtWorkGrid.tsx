@@ -1,12 +1,12 @@
 "use client";
 
-import { fetchArtwork } from "@/lib/query/fetchArtwork";
-import { AnimeInfo, Artwork } from "@/types/api/info";
-import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ArtworkCard } from "./ArtworkCard";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { fetchArtwork } from "@/lib/query/fetchArtwork";
+import { AnimeInfo, Artwork } from "@/types/api/info";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArtworkCard } from "./ArtworkCard";
 
 interface Props {
   anime: AnimeInfo;
@@ -25,18 +25,19 @@ export function ArtworkGrid({ anime }: Props) {
         setArtworks(data.data);
         setHasNextPage(data.hasNextPage);
       })
+      .catch((err) => console.error(err))
       .finally(() => setIsLoading(false));
-  }, [page]);
+  }, [page, anime]);
 
   return (
     <>
       <h2 className="text-xl text-center font-semibold">Artworks</h2>
       {isLoading ? (
         <div className="h-full w-full flex flex-wrap gap-2 justify-center">
-          <Skeleton className="h-72 aspect-[3/4] bg-black/20" />
-          <Skeleton className="h-72 aspect-[3/4] bg-black/20" />
-          <Skeleton className="h-72 aspect-[3/4] bg-black/20" />
-          <Skeleton className="h-72 aspect-[3/4] bg-black/20" />
+          <Skeleton className="h-72 aspect-[3/4]" />
+          <Skeleton className="h-72 aspect-[3/4]" />
+          <Skeleton className="h-72 aspect-[3/4]" />
+          <Skeleton className="h-72 aspect-[3/4]" />
         </div>
       ) : (
         <>

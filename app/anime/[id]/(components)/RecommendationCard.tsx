@@ -16,7 +16,7 @@ export function RecommendationCard({
     <Link
       href={`/anime/${recommendation.id}`}
       className={twMerge(
-        "basis-52 grow-0 shrink-0 shadow-lg shadow-primary rounded-md overflow-hidden",
+        "basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
         className
       )}
       key={recommendation.id}

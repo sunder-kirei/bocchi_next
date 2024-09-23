@@ -62,7 +62,7 @@ export function EpisodeList({
         {anime.episodes
           .slice(page * 100, (page + 1) * 100)
           .reverse()
-          .map((episode, idx) => (
+          .map((episode) => (
             <Link
               key={episode.id}
               href={`/anime/${anime.id}/watch/${episode.id}`}

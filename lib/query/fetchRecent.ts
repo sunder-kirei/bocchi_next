@@ -3,7 +3,6 @@ import { MetaProvider } from "../api/metaProvider";
 
 export async function fetchRecent() {
   const raw = await MetaProvider.fetchRecentEpisodes("gogoanime", 1, 5);
-  console.dir({ raw });
 
   const data = [] as Recent[];
 
@@ -22,6 +21,5 @@ export async function fetchRecent() {
       data.push({ ...gogo } as Recent);
     }
   }
-  console.dir({ data });
   return data;
 }

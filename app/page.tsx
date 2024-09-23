@@ -8,6 +8,7 @@ import { AnimeCard } from "./(components)/AnimeCard";
 import { Section } from "./(components)/Section";
 import { SectionHeading } from "./(components)/SectionHeading";
 import { fetchPopular } from "@/lib/query/fetchPopular";
+import { HistorySection } from "./(components)/HistorySection";
 
 export default async function Home() {
   const recent = await fetchRecent();
@@ -18,6 +19,8 @@ export default async function Home() {
     <Page>
       <RecentsCarousel recents={recent} />
       <main className="flex flex-col gap-y-4 mt-4">
+        {/* History */}
+        <HistorySection />
         {/* Trending */}
         <SectionHeading title="Trending" />
         <Section>

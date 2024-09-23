@@ -14,6 +14,7 @@ import { Hero } from "./(components)/Hero";
 import { RecommendationCard } from "./(components)/RecommendationCard";
 import { RelationCard } from "./(components)/RelationCard";
 import { Summary } from "./(components)/Summary";
+import { WatchingStatus } from "./(components)/WatchingStatus";
 
 export default async function InfoPage({
   params: { id },
@@ -31,15 +32,8 @@ export default async function InfoPage({
           <Summary anime={anime} />
         </div>
 
-        <Link
-          href={``}
-          className="px-4 py-2 w-full rounded-md mt-8 text-xl text-white text-center flex gap-x-2 items-center justify-center"
-          style={{
-            backgroundColor: anime.color,
-          }}
-        >
-          Start Watching
-        </Link>
+        {/* Start Watching */}
+        <WatchingStatus anime={anime} />
         <Link
           href={``}
           className="px-4 py-2 w-full rounded-md mt-2 text-xl text-white text-center flex gap-x-2 items-center justify-center bg-accent"

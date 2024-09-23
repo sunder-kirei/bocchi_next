@@ -37,10 +37,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
 
   return (
     <div
-      className={twMerge(
-        "w-96 mx-auto aspect-[9/14] sm:w-full sm:h-96",
-        className
-      )}
+      className={twMerge("mx-auto aspect-[9/14] w-full sm:h-96", className)}
       {...props}
     >
       <div

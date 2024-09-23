@@ -18,7 +18,13 @@ export default async function WatchPage({
 
   return (
     <Page className="max-w-screen-lg">
-      <HLSPlayer data={data} className="mx-auto" />
+      <HLSPlayer
+        data={data}
+        className="mx-auto"
+        animeID={id}
+        episodeID={watchId}
+        episode={currentEpisode || 0}
+      />
       <main className="mt-4">
         <div className="flex">
           <Hero
@@ -28,28 +34,32 @@ export default async function WatchPage({
             id={anime.id}
           />
           <div
-            className={twMerge("py-4 px-6 w-full flex flex-col h-fit")}
+            className={twMerge(
+              "sm:py-4 sm:px-6 p-2 w-full flex flex-col h-fit"
+            )}
             style={{
               color: anime.color,
             }}
           >
-            <span className="text-lg line-clamp-2">{anime.title.english}</span>
+            <span className="sm:text-lg text-base line-clamp-2">
+              {anime.title.english}
+            </span>
             <div className="data flex flex-col gap-1 my-2">
-              <div className="flex">
+              <div className="flex items-center gap-1">
                 <span className="w-full">Episodes:</span>
-                <span className="w-full">
+                <span className="w-full sm:text-base text-sm">
                   {currentEpisode} / {anime.totalEpisodes}
                 </span>
               </div>
-              <div className="flex">
+              <div className="flex items-center gap-1">
                 <span className="w-full">Season:</span>
-                <span className="w-full">
+                <span className="w-full sm:text-base text-sm">
                   {anime.season} {anime.startDate.year}
                 </span>
               </div>
               {anime.nextAiringEpisode && (
                 <div
-                  className="flex items-center gap-x-2 px-4 py-2 rounded text-white w-fit"
+                  className="flex items-center gap-x-2 sm:px-4 sm:py-2 p-2 rounded text-white w-fit"
                   style={{
                     backgroundColor: anime.color,
                   }}
@@ -69,7 +79,7 @@ export default async function WatchPage({
               {anime.genres.slice(0, 2).map((genre) => (
                 <div
                   key={genre}
-                  className="px-4 py-2 bg-primary rounded-full w-fit"
+                  className="sm:px-4 sm:py-2 px-1 py-2 text-xs sm:text-sm bg-primary rounded-full w-fit"
                 >
                   {genre}
                 </div>

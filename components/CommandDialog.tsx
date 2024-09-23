@@ -63,8 +63,11 @@ export function AppCommandDialog({ open, setOpen }: Props) {
           }, 600)}
         />
         <CommandList className="scrollbar-none">
-          <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Anime Search">
+            {((!isLoading && !results) ||
+              (!isLoading && results && results.results.length === 0)) && (
+              <div className="p-4 grid place-items-center">No results</div>
+            )}
             {!isLoading &&
               results &&
               results.results.map((anime) => (
@@ -132,24 +135,6 @@ export function AppCommandDialog({ open, setOpen }: Props) {
                 <Loader2 className="animate-spin" />
               </div>
             )}
-          </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="Settings">
-            <CommandItem>
-              <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard className="mr-2 h-4 w-4" />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings className="mr-2 h-4 w-4" />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>

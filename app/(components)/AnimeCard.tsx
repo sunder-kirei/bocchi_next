@@ -5,14 +5,15 @@ import { twMerge } from "tailwind-merge";
 
 interface Props extends Omit<HTMLAttributes<HTMLElement>, "children"> {
   anime: Anime;
+  href?: string;
 }
 
-export function AnimeCard({ className, style, anime, ...props }: Props) {
+export function AnimeCard({ className, style, anime, href, ...props }: Props) {
   return (
     <Link
-      href={`/anime/${anime.id}`}
+      href={href || `/anime/${anime.id}`}
       className={twMerge(
-        "basis-40 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
+        "basis-36 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
         className
       )}
       key={anime.id}
@@ -36,7 +37,7 @@ export function AnimeCard({ className, style, anime, ...props }: Props) {
       <div className="w-full p-4 flex flex-col items-center gap-y-1">
         <div className="w-full flex items-center justify-between ">
           <span className="line-clamp-2 sm:line-clamp-1">
-            {anime.title.userPreferred}
+            {anime.title.english}
           </span>
           <span
             className="text-white px-2 py-1 rounded hidden sm:inline"

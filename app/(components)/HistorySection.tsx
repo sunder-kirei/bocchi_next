@@ -41,7 +41,10 @@ export function HistorySection({ className, ...props }: Props) {
     animes.length > 0 && (
       <>
         <SectionHeading title="History" />
-        <Section className={twMerge("justify-start", className)} {...props}>
+        <Section
+          className={twMerge("justify-start flex-nowrap", className)}
+          {...props}
+        >
           {animes.map((anime) => {
             const history = histories.find((h) => h.animeID === anime.id);
             const href = history

@@ -8,7 +8,6 @@ import useEmbla from "embla-carousel-react";
 import { HTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { DotButton, useDotButton } from "./DotButtons";
-import a from "next/link";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   recents: Recent[];

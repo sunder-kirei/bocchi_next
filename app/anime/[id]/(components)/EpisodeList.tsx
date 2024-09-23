@@ -3,14 +3,13 @@
 import { SectionHeading } from "@/app/(components)/SectionHeading";
 import {
   Select,
+  SelectContent,
+  SelectItem,
   SelectTrigger,
   SelectValue,
-  SelectItem,
-  SelectContent,
 } from "@/components/ui/select";
 import { AnimeInfo } from "@/types/api/info";
 import Image from "next/image";
-import a from "next/link";
 import { HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 

@@ -1,5 +1,4 @@
 import { Recommendation } from "@/types/api/info";
-import a from "next/link";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 

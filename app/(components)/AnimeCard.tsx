@@ -1,5 +1,4 @@
 import { Anime } from "@/types/api/anime";
-import a from "next/link";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 

@@ -44,9 +44,7 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
         </span>
         <span className="mt-auto flex gap-1">
           <span className="text-foreground">{relation.type}</span>
-          <span className="text-foreground" Ō>
-            {"\u2022"}
-          </span>
+          <span className="text-foreground">{"\u2022"}</span>
           <span>{relation.status}</span>
         </span>
       </div>

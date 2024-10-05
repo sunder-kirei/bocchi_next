@@ -7,6 +7,7 @@ import { AnchorHTMLAttributes, HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AppCommandDialog } from "../CommandDialog";
 import { Button } from "../ui/button";
+import React from "react";
 
 function NavTile({
   className,

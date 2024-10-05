@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { HTMLAttributes, MouseEventHandler, useRef, useState } from "react";
+import { HTMLAttributes, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Props = HTMLAttributes<HTMLElement>;
@@ -40,7 +40,6 @@ export function Section({ className, children, ...props }: Props) {
         )}
         {...props}
       >
-
         {children}
       </div>
       <Button
@@ -51,6 +50,5 @@ export function Section({ className, children, ...props }: Props) {
         <ChevronRight />
       </Button>
     </section>
-
   );
 }

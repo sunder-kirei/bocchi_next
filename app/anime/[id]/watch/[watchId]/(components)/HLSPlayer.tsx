@@ -24,7 +24,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
 }) => {
   const [src, setSrc] = useState(
     data.sources.find((s) => s.quality === "default")?.url ??
-      data.sources[0].url
+      data.sources[0].url,
   );
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -71,7 +71,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
 
       const keyListeners: (
         this: HTMLVideoElement,
-        ev: KeyboardEvent
+        ev: KeyboardEvent,
       ) => void = (e) => {
         e.preventDefault();
         if (e.key === "f") {
@@ -132,7 +132,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
             variant="outline"
             className={twMerge(
               "capitalize transition-all duration-300",
-              s.url === src && "bg-primary text-white"
+              s.url === src && "bg-primary text-white",
             )}
             onClick={() => {
               setSrc(s.url);

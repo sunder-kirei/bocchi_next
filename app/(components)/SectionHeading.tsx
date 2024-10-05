@@ -25,7 +25,7 @@ export function SectionHeading({
             size="icon"
             className={twMerge(
               "flex w-fit items-end gap-x-2 more cursor-pointer justify-start",
-              className
+              className,
             )}
             {...props}
           >

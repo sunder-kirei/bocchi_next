@@ -73,7 +73,7 @@ export function AppCommandDialog({ open, setOpen }: Props) {
                   className={twMerge(
                     "border mb-2 transition-all",
                     "data-[selected=true]:shadow",
-                    "data-[selected=true]:bg-inherit"
+                    "data-[selected=true]:bg-inherit",
                   )}
                   style={
                     {
@@ -98,7 +98,7 @@ export function AppCommandDialog({ open, setOpen }: Props) {
                     />
                     <div
                       className={twMerge(
-                        "w-full flex flex-col items-end h-full text-end"
+                        "w-full flex flex-col items-end h-full text-end",
                       )}
                     >
                       <span className="text-lg line-clamp-2">

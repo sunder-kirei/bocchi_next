@@ -11,7 +11,7 @@ export function Summary({ className, anime, style, ...props }: Props) {
     <div
       className={twMerge(
         "py-2 px-2 sm:px-4 sm:py-6 w-full flex flex-col h-fit",
-        className
+        className,
       )}
       style={{
         color: anime.color ?? "white",

@@ -93,13 +93,13 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
     <div
       className={twMerge(
         "mx-auto sm:aspect-video aspect-[9/14] max-h-[80vh] w-full relative",
-        className
+        className,
       )}
       {...props}
     >
       <div
         className={twMerge(
-          "overflow-hidden w-full h-full flex flex-col relative"
+          "overflow-hidden w-full h-full flex flex-col relative",
         )}
         ref={emblaRef}
       >
@@ -112,7 +112,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
             >
               <div
                 className={twMerge(
-                  "relative h-full bg-cover bg-center rounded-sm overflow-hidden flex items-end w-full"
+                  "relative h-full bg-cover bg-center rounded-sm overflow-hidden flex items-end w-full",
                 )}
                 style={
                   {
@@ -224,7 +224,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
                 "h-20 aspect-[3/4] bg-cover transition-all origin-bottom cursor-pointer rounded-sm",
                 selectedIndex === index
                   ? "scale-150 mx-4 ring-1 ring-white"
-                  : "hover:scale-110"
+                  : "hover:scale-110",
               )}
               onClick={() => onDotButtonClick(index)}
             />

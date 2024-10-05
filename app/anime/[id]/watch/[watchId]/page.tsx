@@ -35,7 +35,7 @@ export default async function WatchPage({
           />
           <div
             className={twMerge(
-              "sm:py-4 sm:px-6 p-2 w-full flex flex-col h-fit"
+              "sm:py-4 sm:px-6 p-2 w-full flex flex-col h-fit",
             )}
             style={{
               color: anime.color,
@@ -68,7 +68,7 @@ export default async function WatchPage({
                   <span>
                     {format(
                       new Date(anime.nextAiringEpisode.airingTime * 1000),
-                      "dd MMM hh:mm a"
+                      "dd MMM hh:mm a",
                     )}
                   </span>
                 </div>

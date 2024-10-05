@@ -20,7 +20,7 @@ function NavTile({
       className={twMerge(
         "flex gap-x-2 items-center text-white/50 px-2 py-2 rounded-full transition-colors text-nowrap hover:text-white",
         active && "text-white",
-        className
+        className,
       )}
       {...props}
     >
@@ -45,7 +45,7 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
       <nav
         className={twMerge(
           "w-full sm:w-20 h-16 sm:h-full fixed bottom-0 sm:top-0 sm:left-0 z-10 duration-500 flex flex-row sm:flex-col items-center justify-center gap-4",
-          className
+          className,
         )}
         style={{
           background: `linear-gradient(90deg, rgba(0,0,0,0.8016456582633054) 0%, rgba(255,255,255,0) 100%)`,

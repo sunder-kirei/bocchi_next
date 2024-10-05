@@ -2,7 +2,7 @@ import { MutableRefObject, useEffect, useState } from "react";
 
 export function useInView(
   ref: MutableRefObject<null>,
-  { amount = 0.5 }: { amount?: number }
+  { amount = 0.5 }: { amount?: number },
 ): boolean {
   const [isInView, setIsInView] = useState(false);
 
@@ -14,7 +14,7 @@ export function useInView(
       },
       {
         threshold: amount,
-      }
+      },
     );
     if (ref.current) {
       observer.observe(ref.current);

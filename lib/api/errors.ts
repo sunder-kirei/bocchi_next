@@ -8,7 +8,7 @@ export const InternalServerError = (err: any) => {
       message: "Something went wrong",
       error: err,
     },
-    { status: 500, statusText: "Internal Server Error" }
+    { status: 500, statusText: "Internal Server Error" },
   );
 };
 
@@ -18,6 +18,6 @@ export const SchemaError = (err: ZodError) => {
       message: err.message,
       error: err.errors.toString(),
     },
-    { status: 400, statusText: "Bad request" }
+    { status: 400, statusText: "Bad request" },
   );
 };

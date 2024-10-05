@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
       hasNextPage: Number(page) * 50 < data.artwork.length,
       artwork: data.artwork.slice(
         Math.max(Number(page) - 1, 0) * 50,
-        Number(page) * 50
+        Number(page) * 50,
       ),
     });
   } catch (err) {

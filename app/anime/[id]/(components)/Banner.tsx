@@ -13,7 +13,7 @@ export function Banner({ className, anime, ...props }: Props) {
     <div
       className={twMerge(
         "w-full h-72 relative flex items-end justify-end p-2 gap-2 bg-black/30",
-        className
+        className,
       )}
       {...props}
     >
@@ -48,7 +48,7 @@ export function Banner({ className, anime, ...props }: Props) {
           <span>
             {format(
               new Date(anime.nextAiringEpisode.airingTime * 1000),
-              "dd MMM, yyyy hh:mm a"
+              "dd MMM, yyyy hh:mm a",
             )}
           </span>
         </div>

@@ -12,7 +12,7 @@ export function Hero({ className, style, id, image, color, ...props }: Props) {
     <a
       className={twMerge(
         "basis-44 sm:basis-52 shrink-0 grow-0 aspect-[3/4] bg-cover rounded shadow-lg z-10 block",
-        className
+        className,
       )}
       href={id ? `/anime/${id}` : undefined}
       style={

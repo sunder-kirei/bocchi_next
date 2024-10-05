@@ -42,7 +42,7 @@ export function WatchingStatus({ className, style, anime, ...props }: Props) {
       className={twMerge(
         "px-4 py-2 w-full rounded-md mt-8 text-xl text-white text-center flex gap-x-2 items-center justify-center",
         !url && "cursor-not-allowed",
-        className
+        className,
       )}
       style={{
         backgroundColor: url ? anime.color : "grey",

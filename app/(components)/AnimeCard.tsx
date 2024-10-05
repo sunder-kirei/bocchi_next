@@ -13,7 +13,7 @@ export function AnimeCard({ className, style, anime, href, ...props }: Props) {
       href={href || `/anime/${anime.id}`}
       className={twMerge(
         "basis-36 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
-        className
+        className,
       )}
       key={anime.id}
       style={

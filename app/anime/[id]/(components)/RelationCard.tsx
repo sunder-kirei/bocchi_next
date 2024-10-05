@@ -17,7 +17,7 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
       }
       className={twMerge(
         "basis-96 max-w-full grow-0 cursor-pointer shrink-0 shadow shadow-primary rounded-md overflow-hidden flex text-primary h-48",
-        className
+        className,
       )}
       style={
         {

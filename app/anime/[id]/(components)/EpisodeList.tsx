@@ -26,7 +26,7 @@ export function EpisodeList({
 }: Props) {
   // page : [0, _]
   const [page, setPage] = useState(
-    Math.max(Math.floor((current - 1) / 100), 0)
+    Math.max(Math.floor((current - 1) / 100), 0),
   );
   const pages = Math.ceil(anime.totalEpisodes / 100);
 
@@ -67,7 +67,7 @@ export function EpisodeList({
               href={`/anime/${anime.id}/watch/${episode.id}`}
               className={twMerge(
                 "border flex h-20 w-full rounded overflow-hidden",
-                current === episode.number && "ring ring-primary"
+                current === episode.number && "ring ring-primary",
               )}
               style={
                 current === episode.number

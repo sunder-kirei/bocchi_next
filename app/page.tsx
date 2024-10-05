@@ -24,7 +24,7 @@ export default async function Home() {
         <HistorySection />
         {/* Trending */}
         <SectionHeading title="Recents" />
-        <Section className="flex-nowrap">
+        <Section className="flex-nowrap justify-start">
           {recent.map((anime) => (
             <Link key={anime.episodeId} href={`/anime/${anime.id}`}>
               <div

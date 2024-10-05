@@ -25,7 +25,7 @@ export default async function InfoPage({
   return (
     <Page className="px-0">
       <Banner anime={anime} />
-      <main className="max-w-screen-lg mx-auto w-full px-4 sm:pl-20">
+      <main className="max-w-screen-lg mx-auto w-full px-4 pb-4 sm:pl-20">
         <div className="w-full flex">
           <Hero className="-mt-24" color={anime.color} image={anime.image} />
           <Summary anime={anime} />
@@ -46,11 +46,11 @@ export default async function InfoPage({
           dangerouslySetInnerHTML={{ __html: anime.description }}
         />
 
-        {anime.episodes && anime.episodes.length && (
+        {(anime.episodes && anime.episodes.length > 0) && (
           <EpisodeList anime={anime} />
         )}
 
-        {anime.relations && anime.relations.length && (
+        {(anime.relations && anime.relations.length > 0) && (
           <>
             <SectionHeading
               title="Relations"
@@ -77,7 +77,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {anime.characters && anime.characters.length && (
+        {(anime.characters && anime.characters.length > 0) && (
           <>
             <SectionHeading
               title="Characters"
@@ -98,7 +98,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {anime.recommendations && anime.recommendations.length && (
+        {(anime.recommendations && anime.recommendations.length > 0) && (
           <>
             <SectionHeading
               title="Recommendations"
@@ -125,7 +125,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {anime.artwork && anime.artwork.length && (
+        {(anime.artwork && anime.artwork.length > 0) && (
           <>
             <SectionHeading
               title="Artworks"

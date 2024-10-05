@@ -53,11 +53,7 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         {...props}
       >
         <Link href="/" className="hidden sm:block w-full h-fit p-0 m-8">
-          <img
-            src="/android-chrome-512x512.png"
-            alt="bocchi_logo"
-            className="w-full"
-          />
+          <img src="/logo.png" alt="bocchi_logo" className="w-full" />
         </Link>
 
         <Button

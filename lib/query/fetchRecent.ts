@@ -1,7 +1,10 @@
 import { Recent } from "@/types/api/recent";
-import { MetaProvider } from "../api/metaProvider";
 
 export async function fetchRecent() {
-  const raw = await MetaProvider.fetchRecentEpisodes();
-  return raw.results as Recent[];
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_URL + "/anime/recent",
+    {}
+  );
+  const json = await res.json();
+  return json.results as Recent[];
 }

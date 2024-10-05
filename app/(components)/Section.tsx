@@ -34,7 +34,7 @@ export function Section({ className, children, ...props }: Props) {
     >
       <Button
         size="icon"
-        className="hidden sm:block fixed left-4 top-1/2 -translate-y-1/2 h-fit p-2 rounded-full bg-black/20 text-white  hover:bg-black/90 z-10"
+        className="hidden sm:block sticky left-4 top-1/2 -translate-y-1/2 h-fit p-2 rounded-full bg-black/20 text-white  hover:bg-black/90 z-10"
         onClick={handleScrollLeft}
       >
         <ChevronLeft />
@@ -42,7 +42,7 @@ export function Section({ className, children, ...props }: Props) {
       {children}
       <Button
         size="icon"
-        className="hidden sm:block fixed right-4 top-1/2 -translate-y-1/2 h-fit p-2 bg-black/20 text-white rounded-full hover:bg-black/90"
+        className="hidden sm:block sticky right-4 top-1/2 -translate-y-1/2 h-fit p-2 bg-black/20 text-white rounded-full hover:bg-black/90"
         onClick={handleScrollRight}
       >
         <ChevronRight />

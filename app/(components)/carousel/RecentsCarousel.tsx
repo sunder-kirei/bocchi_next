@@ -15,6 +15,7 @@ import React, {
 } from "react";
 import { twMerge } from "tailwind-merge";
 import { useDotButton } from "./DotButtons";
+import Link from "next/link";
 
 interface Props extends HTMLAttributes<HTMLElement> {
   recents: Anime[];
@@ -182,14 +183,16 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
             </div>
           </div>
           <div className="flex gap-4 h-14 mt-auto">
-            <Button
-              variant="default"
-              className="flex gap-2 h-full text-xl p-6 bg-white/20 text-white items-center justify-center hover:bg-white/30 hover:scale-110 transition-all"
-              size="lg"
-            >
-              <PlayIcon size={20} fill="white" />
-              Start Watching
-            </Button>
+            <Link href={`/anime/${recents[selectedIndex].id}`}>
+              <Button
+                variant="default"
+                className="flex gap-2 h-full text-xl p-6 bg-white/20 text-white items-center justify-center hover:bg-white/30 hover:scale-110 transition-all"
+                size="lg"
+              >
+                <PlayIcon size={20} fill="white" />
+                Start Watching
+              </Button>
+            </Link>
             <Button
               variant="default"
               className="flex h-full w-auto aspect-square bg-white/20 text-white items-center justify-center hover:bg-white/30 hover:scale-110 transition-all"

@@ -46,11 +46,11 @@ export default async function InfoPage({
           dangerouslySetInnerHTML={{ __html: anime.description }}
         />
 
-        {(anime.episodes && anime.episodes.length > 0) && (
+        {anime.episodes && anime.episodes.length > 0 && (
           <EpisodeList anime={anime} />
         )}
 
-        {(anime.relations && anime.relations.length > 0) && (
+        {anime.relations && anime.relations.length > 0 && (
           <>
             <SectionHeading
               title="Relations"
@@ -77,7 +77,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {(anime.characters && anime.characters.length > 0) && (
+        {anime.characters && anime.characters.length > 0 && (
           <>
             <SectionHeading
               title="Characters"
@@ -98,7 +98,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {(anime.recommendations && anime.recommendations.length > 0) && (
+        {anime.recommendations && anime.recommendations.length > 0 && (
           <>
             <SectionHeading
               title="Recommendations"
@@ -125,7 +125,7 @@ export default async function InfoPage({
           </>
         )}
 
-        {(anime.artwork && anime.artwork.length > 0) && (
+        {anime.artwork && anime.artwork.length > 0 && (
           <>
             <SectionHeading
               title="Artworks"

@@ -13,9 +13,12 @@ interface Props extends AnchorHTMLAttributes<HTMLAnchorElement> {
 export function WatchingStatus({ className, style, anime, ...props }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   const [history, setHistory] = useState<WatchHistory | undefined>(undefined);
-  const url = history
-    ? `/anime/${history.animeID}/watch/${history.episodeID}`
-    : `/anime/${anime.id}/watch/${anime.episodes[0].id}`;
+  const url =
+    anime.episodes && anime.episodes.length > 0
+      ? history
+        ? `/anime/${history.animeID}/watch/${history.episodeID}`
+        : `/anime/${anime.id}/watch/${anime.episodes[0]?.id}`
+      : undefined;
 
   useEffect(() => {
     const getHistory = async () => {
@@ -38,10 +41,11 @@ export function WatchingStatus({ className, style, anime, ...props }: Props) {
       href={url}
       className={twMerge(
         "px-4 py-2 w-full rounded-md mt-8 text-xl text-white text-center flex gap-x-2 items-center justify-center",
+        !url && "cursor-not-allowed",
         className
       )}
       style={{
-        backgroundColor: anime.color,
+        backgroundColor: url ? anime.color : "grey",
         ...style,
       }}
       {...props}

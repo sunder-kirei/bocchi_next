@@ -25,7 +25,7 @@ export default async function InfoPage({
   return (
     <Page className="px-0">
       <Banner anime={anime} />
-      <main className="max-w-screen-lg mx-auto w-full px-4">
+      <main className="max-w-screen-lg mx-auto w-full px-4 sm:pl-20">
         <div className="w-full flex">
           <Hero className="-mt-24" color={anime.color} image={anime.image} />
           <Summary anime={anime} />
@@ -46,92 +46,110 @@ export default async function InfoPage({
           dangerouslySetInnerHTML={{ __html: anime.description }}
         />
 
-        <EpisodeList anime={anime} />
+        {anime.episodes && anime.episodes.length && (
+          <EpisodeList anime={anime} />
+        )}
 
-        <SectionHeading
-          title="Relations"
-          className="mt-4 mb-2"
-          dialogContent={
-            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
-              {anime.relations.map((relation) => (
+        {anime.relations && anime.relations.length && (
+          <>
+            <SectionHeading
+              title="Relations"
+              className="mt-4 mb-2"
+              dialogContent={
+                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                  {anime.relations.map((relation) => (
+                    <RelationCard relation={relation} key={relation.id} />
+                  ))}
+                </DialogContent>
+              }
+            />
+            <Section
+              style={
+                {
+                  "--scrollbar-thumb": `${anime.color} !important`,
+                } as React.CSSProperties
+              }
+            >
+              {anime.relations.slice(0, 10).map((relation) => (
                 <RelationCard relation={relation} key={relation.id} />
               ))}
-            </DialogContent>
-          }
-        />
-        <Section
-          style={
-            {
-              "--scrollbar-thumb": `${anime.color} !important`,
-            } as React.CSSProperties
-          }
-        >
-          {anime.relations.slice(0, 10).map((relation) => (
-            <RelationCard relation={relation} key={relation.id} />
-          ))}
-        </Section>
+            </Section>
+          </>
+        )}
 
-        <SectionHeading
-          title="Characters"
-          className="mt-4 mb-2"
-          dialogContent={
-            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
-              {anime.characters.map((character) => (
+        {anime.characters && anime.characters.length && (
+          <>
+            <SectionHeading
+              title="Characters"
+              className="mt-4 mb-2"
+              dialogContent={
+                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                  {anime.characters.map((character) => (
+                    <CharacterCard character={character} key={character.id} />
+                  ))}
+                </DialogContent>
+              }
+            />
+            <Section className="scrollbar-thumb-secondary">
+              {anime.characters.slice(0, 10).map((character) => (
                 <CharacterCard character={character} key={character.id} />
               ))}
-            </DialogContent>
-          }
-        />
-        <Section className="scrollbar-thumb-secondary">
-          {anime.characters.slice(0, 10).map((character) => (
-            <CharacterCard character={character} key={character.id} />
-          ))}
-        </Section>
+            </Section>
+          </>
+        )}
 
-        <SectionHeading
-          title="Recommendations"
-          className="mt-4 mb-2"
-          dialogContent={
-            <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
-              {anime.recommendations.map((recommendation) => (
+        {anime.recommendations && anime.recommendations.length && (
+          <>
+            <SectionHeading
+              title="Recommendations"
+              className="mt-4 mb-2"
+              dialogContent={
+                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                  {anime.recommendations.map((recommendation) => (
+                    <RecommendationCard
+                      recommendation={recommendation}
+                      key={recommendation.id}
+                    />
+                  ))}
+                </DialogContent>
+              }
+            />
+            <Section className="scrollbar-thumb-primary">
+              {anime.recommendations.slice(0, 10).map((recommendation) => (
                 <RecommendationCard
                   recommendation={recommendation}
                   key={recommendation.id}
                 />
               ))}
-            </DialogContent>
-          }
-        />
-        <Section className="scrollbar-thumb-primary">
-          {anime.recommendations.slice(0, 10).map((recommendation) => (
-            <RecommendationCard
-              recommendation={recommendation}
-              key={recommendation.id}
-            />
-          ))}
-        </Section>
+            </Section>
+          </>
+        )}
 
-        <SectionHeading
-          title="Artworks"
-          className="mt-4 mb-2"
-          dialogContent={
-            <DialogContent
-              className="max-h-[80%] h-full max-w-[80%] w-full overflow-y-auto scrollbar-none"
-              style={
-                {
-                  "--scrollbar-thumb": `${anime.color}`,
-                } as React.CSSProperties
+        {anime.artwork && anime.artwork.length && (
+          <>
+            <SectionHeading
+              title="Artworks"
+              className="mt-4 mb-2"
+              dialogContent={
+                <DialogContent
+                  className="max-h-[80%] h-full max-w-[80%] w-full overflow-y-auto scrollbar-none"
+                  style={
+                    {
+                      "--scrollbar-thumb": `${anime.color}`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <ArtworkGrid anime={anime} />
+                </DialogContent>
               }
-            >
-              <ArtworkGrid anime={anime} />
-            </DialogContent>
-          }
-        />
-        <div className="episode-grid">
-          {anime.artwork.map((art, idx) => (
-            <ArtworkCard art={art} key={idx} color={anime.color} />
-          ))}
-        </div>
+            />
+            <div className="episode-grid">
+              {anime.artwork?.map((art, idx) => (
+                <ArtworkCard art={art} key={idx} color={anime.color} />
+              ))}
+            </div>
+          </>
+        )}
       </main>
     </Page>
   );

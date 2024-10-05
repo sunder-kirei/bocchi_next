@@ -8,6 +8,8 @@ import { Section } from "./Section";
 import { twMerge } from "tailwind-merge";
 import { fetchInfoOnly } from "@/lib/query/fetchInfoOnly";
 import { SectionHeading } from "./SectionHeading";
+import React from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props = HTMLAttributes<HTMLElement> & {};
 
@@ -38,8 +40,9 @@ export function HistorySection({ className, ...props }: Props) {
       .finally(() => setIsLoading(false));
   }, []);
 
-  return (
-    !isLoading &&
+  return isLoading ? (
+    <Skeleton className="h-36 sm:h-52 aspect-[3/4]" />
+  ) : (
     animes.length > 0 && (
       <>
         <SectionHeading title="History" />
@@ -49,9 +52,7 @@ export function HistorySection({ className, ...props }: Props) {
         >
           {animes.map((anime) => {
             const history = histories.find((h) => h.animeID === anime.id);
-            const href = history
-              ? `/anime/${anime.id}/watch/${history.episodeID}`
-              : undefined;
+            const href = history ? `/anime/${anime.id}` : undefined;
             return <AnimeCard anime={anime} key={anime.id} href={href} />;
           })}
         </Section>

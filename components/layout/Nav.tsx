@@ -1,14 +1,9 @@
 "use client";
 
-import { useInView } from "@/hooks/useInView";
-import { House, Search } from "lucide-react";
-import {
-  AnchorHTMLAttributes,
-  HTMLAttributes,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { House, Library, Search, UserRound } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AnchorHTMLAttributes, HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AppCommandDialog } from "../CommandDialog";
 import { Button } from "../ui/button";
@@ -22,8 +17,8 @@ function NavTile({
   return (
     <a
       className={twMerge(
-        "flex gap-x-2 items-center px-4 py-2 rounded-full transition-colors text-nowrap",
-        active && "bg-primary",
+        "flex gap-x-2 items-center text-white/50 px-2 py-2 rounded-full transition-colors text-nowrap hover:text-white",
+        active && "text-white",
         className
       )}
       {...props}
@@ -33,57 +28,10 @@ function NavTile({
   );
 }
 
-function NavBar({
-  className,
-  onClick,
-  ...props
-}: HTMLAttributes<HTMLElement> & { onClick: () => void }) {
-  const [link, setLink] = useState("");
-
-  useEffect(() => {
-    function set() {
-      const id = window.location.href.split("#");
-      if (id.length > 1) setLink(id[1]);
-    }
-    window.addEventListener("popstate", set);
-    set();
-
-    return () => {
-      window.removeEventListener("popstate", set);
-    };
-  }, []);
-
-  return (
-    <nav
-      className={twMerge(
-        "w-full h-fit p-4 z-[10000]  duration-500 flex items-center justify-center gap-x-4",
-        className
-      )}
-      {...props}
-    >
-      <NavTile href="/" active={`${link}` === "/" || link === ""}>
-        <House />
-        Home
-      </NavTile>
-      <Button
-        variant="ghost"
-        className="rounded-full"
-        size="icon"
-        onClick={onClick}
-      >
-        <Search />
-      </Button>
-    </nav>
-  );
-}
-
 export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
   const [open, setOpen] = useState(false);
 
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    amount: 0.6,
-  });
+  const location = usePathname();
 
   function handleSearch() {
     setOpen(true);
@@ -93,27 +41,49 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
     <>
       <AppCommandDialog open={open} setOpen={setOpen} />
 
-      <div
-        className={twMerge("w-full h-fit z-[1000]", className)}
+      <nav
+        className={twMerge(
+          "w-full sm:w-20 h-16 sm:h-full fixed bottom-0 sm:top-0 sm:left-0 z-10 duration-500 flex flex-row sm:flex-col items-center justify-center gap-4",
+          className
+        )}
+        style={{
+          background: `linear-gradient(90deg, rgba(0,0,0,0.8016456582633054) 0%, rgba(255,255,255,0) 100%)`,
+        }}
         {...props}
-        ref={ref}
       >
-        <NavBar
-          className={twMerge(
-            "",
-            !isInView ? "opacity-0 -translate-y-32 scale-0" : "scale-100"
-          )}
-          onClick={handleSearch}
-        />
+        <Link href="/" className="hidden sm:block w-full h-fit p-0 m-8">
+          <img
+            src="/android-chrome-512x512.png"
+            alt="bocchi_logo"
+            className="w-full"
+          />
+        </Link>
 
-        <NavBar
-          className={twMerge(
-            "fixed bottom-2 w-fit left-1/2 -translate-x-1/2 rounded-full bg-background shadow-secondary shadow",
-            isInView ? "opacity-0  translate-y-32 scale-0" : "scale-100"
-          )}
+        <Button
+          variant="ghost"
+          className="rounded-full text-white/50 hover:text-white hover:bg-transparent"
+          size="icon"
           onClick={handleSearch}
-        />
-      </div>
+        >
+          <Search />
+        </Button>
+
+        <NavTile href="/" active={`${location}` === "/" || location === ""}>
+          <House />
+        </NavTile>
+
+        <NavTile href="/library" active={`${location}` === "/library"}>
+          <Library />
+        </NavTile>
+
+        <NavTile
+          href="/profile"
+          active={`${location}` === "/profile"}
+          className="sm:mt-auto sm:mb-8"
+        >
+          <UserRound />
+        </NavTile>
+      </nav>
     </>
   );
 }

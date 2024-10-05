@@ -30,7 +30,7 @@ export function Banner({ className, anime, ...props }: Props) {
         }}
         className="text-white px-4 py-2 w-fit rounded"
       >
-        {anime.rating / 10}
+        {anime.rating ? anime.rating / 10 : "Unrated"}
       </div>
       {anime.isAdult && (
         <div className="text-white px-4 py-2 w-fit rounded bg-red-600">

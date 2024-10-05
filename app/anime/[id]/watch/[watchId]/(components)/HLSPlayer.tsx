@@ -55,12 +55,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
         setDuration(videoRef.current?.currentTime);
       });
 
-      const hls = new Hls({
-        // xhrSetup: (_xhr: XMLHttpRequest) => {
-        // Add the custom Referer header here
-        // xhr.setRequestHeader("Referer", data.headers.Referer);
-        // },
-      });
+      const hls = new Hls();
 
       hls.loadSource(src);
       hls.attachMedia(videoRef.current);
@@ -121,12 +116,14 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
       className={twMerge("w-full h-full flex flex-col gap-y-4", className)}
       {...props}
     >
-      <video
-        ref={videoRef}
-        className="aspect-video w-full rounded"
-        controls
-        playsInline
-      />
+      <div className="video_container w-full h-full relative">
+        <video
+          ref={videoRef}
+          className="aspect-video w-full rounded"
+          controls
+          playsInline
+        />
+      </div>
 
       <div className="quality flex flex-wrap gap-2 mx-auto">
         {data.sources.map((s) => (

@@ -14,25 +14,29 @@ export function Summary({ className, anime, style, ...props }: Props) {
         className
       )}
       style={{
-        color: anime.color,
+        color: anime.color ?? "white",
         ...style,
       }}
       {...props}
     >
       <span className="text-base sm:text-lg line-clamp-2">
-        {anime.title.english}
+        {anime.title.english || anime.title.romaji || anime.title.native}
       </span>
       <div className="data flex flex-col gap-1 my-2">
         <div className="flex items-center gap-1">
           <span className="w-full">Episodes:</span>
           <span className="w-full text-sm sm:text-base">
-            {anime.currentEpisode} / {anime.totalEpisodes}
+            {anime.totalEpisodes && anime.totalEpisodes > 0
+              ? `${anime.currentEpisode} / ${anime.totalEpisodes}`
+              : "Not yet aired"}
           </span>
         </div>
         <div className="flex items-center gap-1">
           <span className="w-full">Season:</span>
           <span className="w-full text-sm sm:text-base">
-            {anime.season} {anime.startDate.year}
+            {anime.startDate.year
+              ? `${anime.season} ${anime.startDate.year}`
+              : "Yet to be announced"}
           </span>
         </div>
       </div>

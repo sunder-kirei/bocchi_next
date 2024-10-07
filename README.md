@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bocchi - Full Stack Anime Streaming Site
 
-## Getting Started
+Bocchi is a modern, full-stack anime streaming platform that leverages the power of Next.js for server-side rendering and performance, and integrates with the [@consumet](https://www.npmjs.com/package/@consumet) API for retrieving anime data. Designed to deliver a seamless, immersive user experience, Bocchi is also installable as a Progressive Web App (PWA), allowing users to access the platform offline with mobile app-like functionality.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Anime Catalog:** Browse through a vast collection of anime titles powered by @consumet API.
+- **Streaming Support:** Stream episodes directly within the app with a smooth user interface.
+- **Next.js Framework:** Server-side rendering for optimal performance and SEO.
+- **Progressive Web App (PWA):** Installable for offline usage with native-like app experience.
+- **Responsive Design:** Tailored for both desktop and mobile devices using Tailwind CSS.
+- **Efficient Data Fetching:** RTK Query for efficient and smooth client-side data fetching.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Check out the live version of Bocchi: [Bocchi Demo](#)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/sunder-kirei/bocchi_next.git
+   cd bocchi_next
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install dependencies:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. Set up environment variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   API_URL="<hosted_ip | localhost:3000>/api"
+   NEXT_PUBLIC_API_URL="<hosted_ip | localhost:3000>/api"
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Run the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+## Technologies Used
+
+- ### Frontend:
+
+  - **Next.js** - React framework for server-side rendering and static site generation.
+  - **Tailwind CSS** - Utility-first CSS framework for styling.
+
+- ### Backend:
+
+  - **@consumet** - API for fetching anime data.
+
+## Contributing
+
+Contributions are welcome! If you'd like to help improve Bocchi, feel free to fork the repository and submit a pull request.
+
+1. Fork the repository
+2. Create a new feature branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request

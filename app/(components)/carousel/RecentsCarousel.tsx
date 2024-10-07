@@ -93,27 +93,27 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "mx-auto sm:aspect-video aspect-[9/14] max-h-[80vh] w-full relative",
+        "relative mx-auto aspect-[9/14] max-h-[80vh] w-full sm:aspect-video",
         className,
       )}
       {...props}
     >
       <div
         className={twMerge(
-          "overflow-hidden w-full h-full flex flex-col relative",
+          "relative flex h-full w-full flex-col overflow-hidden",
         )}
         ref={emblaRef}
       >
-        <div className="flex touch-pan-y touch-pinch-zoom h-full w-full gap-x-8">
+        <div className="flex h-full w-full touch-pan-y touch-pinch-zoom gap-x-8">
           {recents.map((anime, index) => (
             <a
               href={`/anime/${anime.id}`}
               key={index}
-              className="basis-full grow-0 shrink-0 rounded-sm w-full"
+              className="w-full shrink-0 grow-0 basis-full rounded-sm"
             >
               <div
                 className={twMerge(
-                  "relative h-full bg-cover bg-center rounded-sm overflow-hidden flex items-end w-full",
+                  "relative flex h-full w-full items-end overflow-hidden rounded-sm bg-cover bg-center",
                 )}
                 style={
                   {
@@ -136,17 +136,17 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
         </div>
       </div>
       <div
-        className="w-full h-full text-white flex flex-row items-end sm:justify-end justify-center gap-x-1 overflow-hidden absolute p-4 sm:pl-20 top-0 pointer-events-none"
+        className="pointer-events-none absolute top-0 flex h-full w-full flex-row items-end justify-center gap-x-1 overflow-hidden p-4 text-white sm:justify-end sm:pl-20"
         style={{
           background: `linear-gradient(${
             isSM ? "360deg" : "45deg"
           }, rgba(0,0,0,0.8016456582633054) 0%, rgba(255,255,255,0) 100%)`,
         }}
       >
-        <div className="w-full h-fit flex flex-col gap-4 pointer-events-auto items-center sm:items-start">
-          <div className="w-full h-full flex flex-col gap-2 justify-end items-center sm:items-start">
+        <div className="pointer-events-auto flex h-fit w-full flex-col items-center gap-4 sm:items-start">
+          <div className="flex h-full w-full flex-col items-center justify-end gap-2 sm:items-start">
             <div
-              className="title text-2xl text-center sm:text-left font-bold"
+              className="title text-center text-2xl font-bold sm:text-left"
               style={{
                 color: recents[selectedIndex].color ?? "white",
               }}
@@ -182,11 +182,11 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
               ))}
             </div>
           </div>
-          <div className="flex gap-4 h-14 mt-auto">
+          <div className="mt-auto flex h-14 gap-4">
             <Link href={`/anime/${recents[selectedIndex].id}`}>
               <Button
                 variant="default"
-                className="flex gap-2 h-full text-xl p-6 bg-white/20 text-white items-center justify-center hover:bg-white/30 hover:scale-110 transition-all"
+                className="flex h-full items-center justify-center gap-2 bg-white/20 p-6 text-xl text-white transition-all hover:scale-110 hover:bg-white/30"
                 size="lg"
               >
                 <PlayIcon size={20} fill="white" />
@@ -195,7 +195,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
             </Link>
             <Button
               variant="default"
-              className="flex h-full w-auto aspect-square bg-white/20 text-white items-center justify-center hover:bg-white/30 hover:scale-110 transition-all"
+              className="flex aspect-square h-full w-auto items-center justify-center bg-white/20 text-white transition-all hover:scale-110 hover:bg-white/30"
               size="icon"
             >
               <Plus size={24} fill="white" />
@@ -204,7 +204,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
         </div>
         <div
           ref={ref}
-          className="hidden sm:flex gap-2 w-full h-40 ml-auto relative overflow-x-auto overflow-y-hidden items-end py-1 pointer-events-auto"
+          className="pointer-events-auto relative ml-auto hidden h-40 w-full items-end gap-2 overflow-x-auto overflow-y-hidden py-1 sm:flex"
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
           onMouseUp={handleMouseUpOrLeave}
@@ -212,7 +212,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
         >
           <Button
             size="icon"
-            className="sticky left-0 bottom-10 translate-y-1/2 h-fit p-2 rounded-full bg-black/20 text-white  hover:bg-black/90 z-10"
+            className="sticky bottom-10 left-0 z-10 h-fit translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/90"
             onClick={handleScrollLeft}
           >
             <ChevronLeft />
@@ -224,9 +224,9 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
                 backgroundImage: `url(${recents[index].image})`,
               }}
               className={twMerge(
-                "h-20 aspect-[3/4] bg-cover transition-all origin-bottom cursor-pointer rounded-sm",
+                "aspect-[3/4] h-20 origin-bottom cursor-pointer rounded-sm bg-cover transition-all",
                 selectedIndex === index
-                  ? "scale-150 mx-4 ring-1 ring-white"
+                  ? "mx-4 scale-150 ring-1 ring-white"
                   : "hover:scale-110",
               )}
               onClick={() => onDotButtonClick(index)}
@@ -234,7 +234,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
           ))}
           <Button
             size="icon"
-            className="sticky right-0 bottom-10 translate-y-1/2 h-fit p-2 bg-black/20 text-white rounded-full hover:bg-black/90"
+            className="sticky bottom-10 right-0 h-fit translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/90"
             onClick={handleScrollRight}
           >
             <ChevronRight />

@@ -34,7 +34,7 @@ export function EpisodeList({
     <>
       <SectionHeading
         title="Episodes"
-        className={twMerge("mt-4 mb-2 w-full", className)}
+        className={twMerge("mb-2 mt-4 w-full", className)}
         {...props}
       >
         {anime.totalEpisodes > 100 && (
@@ -42,7 +42,7 @@ export function EpisodeList({
             value={page.toString()}
             onValueChange={(val) => setPage(Number(val))}
           >
-            <SelectTrigger className="w-fit ml-auto">
+            <SelectTrigger className="ml-auto w-fit">
               <SelectValue placeholder="Select episodes" />
             </SelectTrigger>
             <SelectContent className="z-100">
@@ -66,7 +66,7 @@ export function EpisodeList({
               key={episode.id}
               href={`/anime/${anime.id}/watch/${episode.id}`}
               className={twMerge(
-                "border flex h-20 w-full rounded overflow-hidden",
+                "flex h-20 w-full overflow-hidden rounded border",
                 current === episode.number && "ring ring-primary",
               )}
               style={
@@ -78,7 +78,7 @@ export function EpisodeList({
                   : {}
               }
             >
-              <div className="h-full aspect-[3/4] relative">
+              <div className="relative aspect-[3/4] h-full">
                 <Image
                   src={episode.image}
                   alt="episode"

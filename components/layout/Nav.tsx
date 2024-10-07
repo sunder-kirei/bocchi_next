@@ -18,7 +18,7 @@ function NavTile({
   return (
     <a
       className={twMerge(
-        "flex gap-x-2 items-center text-white/50 px-2 py-2 rounded-full transition-colors text-nowrap hover:text-white",
+        "flex items-center gap-x-2 text-nowrap rounded-full px-2 py-2 text-white/50 transition-colors hover:text-white",
         active && "text-white",
         className,
       )}
@@ -44,7 +44,7 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 
       <nav
         className={twMerge(
-          "w-full sm:w-20 h-16 sm:h-full fixed bottom-0 sm:top-0 sm:left-0 z-10 duration-500 flex flex-row sm:flex-col items-center justify-center gap-4",
+          "fixed bottom-0 z-10 flex h-16 w-full flex-row items-center justify-center gap-4 duration-500 sm:left-0 sm:top-0 sm:h-full sm:w-20 sm:flex-col",
           className,
         )}
         style={{
@@ -52,13 +52,13 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         }}
         {...props}
       >
-        <Link href="/" className="hidden sm:block w-full h-fit p-0 m-8">
+        <Link href="/" className="m-8 hidden h-fit w-full p-0 sm:block">
           <img src="/logo.png" alt="bocchi_logo" className="w-full" />
         </Link>
 
         <Button
           variant="ghost"
-          className="rounded-full text-white/50 hover:text-white hover:bg-transparent"
+          className="rounded-full text-white/50 hover:bg-transparent hover:text-white"
           size="icon"
           onClick={handleSearch}
         >
@@ -76,7 +76,7 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
         <NavTile
           href="/profile"
           active={`${location}` === "/profile"}
-          className="sm:mt-auto sm:mb-8"
+          className="sm:mb-8 sm:mt-auto"
         >
           <UserRound />
         </NavTile>

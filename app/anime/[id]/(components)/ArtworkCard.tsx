@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 export function ArtworkCard({ className, style, art, color, ...props }: Props) {
   return (
     <div
-      className={twMerge("relative h-72 shadow rounded", className)}
+      className={twMerge("relative h-72 rounded shadow", className)}
       style={
         {
           "--tw-shadow-color": color,
@@ -25,7 +25,7 @@ export function ArtworkCard({ className, style, art, color, ...props }: Props) {
         src={art.img}
         alt={art.type}
         title={art.img}
-        className="object-contain h-full w-full"
+        className="h-full w-full object-contain"
       />
     </div>
   );

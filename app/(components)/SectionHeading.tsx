@@ -17,22 +17,22 @@ export function SectionHeading({
   ...props
 }: Props) {
   return (
-    <div className="flex items-end mb-2">
+    <div className="mb-2 flex items-end">
       <Dialog>
         <DialogTrigger asChild>
           <Button
             variant="link"
             size="icon"
             className={twMerge(
-              "flex w-fit items-end gap-x-2 more cursor-pointer justify-start",
+              "more flex w-fit cursor-pointer items-end justify-start gap-x-2",
               className,
             )}
             {...props}
           >
             <h2 className="text-xl">{title}</h2>
-            <div className={twMerge("flex items-end w-fit relative ")}>
+            <div className={twMerge("relative flex w-fit items-end")}>
               <ChevronRight className="" />
-              <ChevronRight className="absolute bottom-0 left-0 move transition-all duration-300" />
+              <ChevronRight className="move absolute bottom-0 left-0 transition-all duration-300" />
             </div>
           </Button>
         </DialogTrigger>

@@ -15,7 +15,7 @@ export function RecommendationCard({
     <a
       href={`/anime/${recommendation.id}`}
       className={twMerge(
-        "basis-36 sm:basis-52 grow-0 shrink-0 shadow shadow-primary rounded-md overflow-hidden",
+        "shrink-0 grow-0 basis-36 overflow-hidden rounded-md shadow shadow-primary sm:basis-52",
         className,
       )}
       key={recommendation.id}
@@ -27,12 +27,12 @@ export function RecommendationCard({
           backgroundImage: `url(${recommendation.image})`,
         }}
       ></div>
-      <div className="w-full p-4 flex flex-col items-center gap-y-1">
-        <div className="w-full flex items-center justify-between ">
+      <div className="flex w-full flex-col items-center gap-y-1 p-4">
+        <div className="flex w-full items-center justify-between">
           <span className="line-clamp-1">
             {recommendation.title.userPreferred}
           </span>
-          <span className="text-white px-2 py-1 rounded">
+          <span className="rounded px-2 py-1 text-white">
             {recommendation.type}
           </span>
         </div>

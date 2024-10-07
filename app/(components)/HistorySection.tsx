@@ -41,13 +41,13 @@ export function HistorySection({ className, ...props }: Props) {
   }, []);
 
   return isLoading ? (
-    <Skeleton className="h-36 sm:h-52 aspect-[3/4]" />
+    <Skeleton className="aspect-[3/4] h-36 sm:h-52" />
   ) : (
     animes.length > 0 && (
       <>
         <SectionHeading title="History" />
         <Section
-          className={twMerge("justify-start flex-nowrap", className)}
+          className={twMerge("flex-nowrap justify-start", className)}
           {...props}
         >
           {animes.map((anime) => {

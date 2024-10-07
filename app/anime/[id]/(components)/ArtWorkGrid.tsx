@@ -31,24 +31,24 @@ export function ArtworkGrid({ anime }: Props) {
 
   return (
     <>
-      <h2 className="text-xl text-center font-semibold">Artworks</h2>
+      <h2 className="text-center text-xl font-semibold">Artworks</h2>
       {isLoading ? (
-        <div className="h-full w-full flex flex-wrap gap-2 justify-center">
-          <Skeleton className="h-72 aspect-[3/4]" />
-          <Skeleton className="h-72 aspect-[3/4]" />
-          <Skeleton className="h-72 aspect-[3/4]" />
-          <Skeleton className="h-72 aspect-[3/4]" />
+        <div className="flex h-full w-full flex-wrap justify-center gap-2">
+          <Skeleton className="aspect-[3/4] h-72" />
+          <Skeleton className="aspect-[3/4] h-72" />
+          <Skeleton className="aspect-[3/4] h-72" />
+          <Skeleton className="aspect-[3/4] h-72" />
         </div>
       ) : (
         <>
-          <div className="episode-grid w-full h-full">
+          <div className="episode-grid h-full w-full">
             {artworks.map((art, idx) => (
               <ArtworkCard art={art} key={idx} color={anime.color} />
             ))}
           </div>
-          <div className="sticky bottom-2 right-2 w-fit text-xl items-center flex gap-x-2">
+          <div className="sticky bottom-2 right-2 flex w-fit items-center gap-x-2 text-xl">
             <Button
-              className="rounded-full size-12 bg-secondary grid place-items-center"
+              className="grid size-12 place-items-center rounded-full bg-secondary"
               onClick={() => {
                 setPage((prev) => Math.max(prev - 1, 1));
               }}
@@ -57,7 +57,7 @@ export function ArtworkGrid({ anime }: Props) {
               <ChevronLeft className="size-8 text-white" />
             </Button>
             <Button
-              className="rounded-full size-12 bg-secondary grid place-items-center"
+              className="grid size-12 place-items-center rounded-full bg-secondary"
               onClick={() => {
                 setPage((prev) => prev + 1);
               }}

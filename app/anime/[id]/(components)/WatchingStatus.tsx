@@ -35,12 +35,12 @@ export function WatchingStatus({ className, style, anime, ...props }: Props) {
       });
   }, [anime.id]);
   return isLoading ? (
-    <Skeleton className="w-full h-12 mt-8" />
+    <Skeleton className="mt-8 h-12 w-full" />
   ) : (
     <a
       href={url}
       className={twMerge(
-        "px-4 py-2 w-full rounded-md mt-8 text-xl text-white text-center flex gap-x-2 items-center justify-center",
+        "mt-8 flex w-full items-center justify-center gap-x-2 rounded-md px-4 py-2 text-center text-xl text-white",
         !url && "cursor-not-allowed",
         className,
       )}

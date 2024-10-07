@@ -17,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <Page className="flex flex-col justify-center items-center gap-4">
+    <Page className="flex flex-col items-center justify-center gap-4">
       <h2 className="text-2xl">Something went wrong!</h2>
       <Button
         onClick={

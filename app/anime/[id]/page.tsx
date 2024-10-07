@@ -25,8 +25,8 @@ export default async function InfoPage({
   return (
     <Page className="px-0">
       <Banner anime={anime} />
-      <main className="max-w-screen-lg mx-auto w-full px-4 pb-4 sm:pl-20">
-        <div className="w-full flex">
+      <main className="mx-auto w-full max-w-screen-lg px-4 pb-4 sm:pl-20">
+        <div className="flex w-full">
           <Hero className="-mt-24" color={anime.color} image={anime.image} />
           <Summary anime={anime} />
         </div>
@@ -40,7 +40,7 @@ export default async function InfoPage({
           Add to list
         </a> */}
 
-        <SectionHeading title="Description" className="mt-4 mb-2" />
+        <SectionHeading title="Description" className="mb-2 mt-4" />
         <p
           className="text-justify"
           dangerouslySetInnerHTML={{ __html: anime.description }}
@@ -54,9 +54,9 @@ export default async function InfoPage({
           <>
             <SectionHeading
               title="Relations"
-              className="mt-4 mb-2"
+              className="mb-2 mt-4"
               dialogContent={
-                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                <DialogContent className="flex max-h-[80%] flex-wrap justify-center overflow-y-auto">
                   {anime.relations.map((relation) => (
                     <RelationCard relation={relation} key={relation.id} />
                   ))}
@@ -81,9 +81,9 @@ export default async function InfoPage({
           <>
             <SectionHeading
               title="Characters"
-              className="mt-4 mb-2"
+              className="mb-2 mt-4"
               dialogContent={
-                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                <DialogContent className="flex max-h-[80%] flex-wrap justify-center overflow-y-auto">
                   {anime.characters.map((character) => (
                     <CharacterCard character={character} key={character.id} />
                   ))}
@@ -102,9 +102,9 @@ export default async function InfoPage({
           <>
             <SectionHeading
               title="Recommendations"
-              className="mt-4 mb-2"
+              className="mb-2 mt-4"
               dialogContent={
-                <DialogContent className=" flex flex-wrap justify-center overflow-y-auto max-h-[80%]">
+                <DialogContent className="flex max-h-[80%] flex-wrap justify-center overflow-y-auto">
                   {anime.recommendations.map((recommendation) => (
                     <RecommendationCard
                       recommendation={recommendation}
@@ -129,10 +129,10 @@ export default async function InfoPage({
           <>
             <SectionHeading
               title="Artworks"
-              className="mt-4 mb-2"
+              className="mb-2 mt-4"
               dialogContent={
                 <DialogContent
-                  className="max-h-[80%] h-full max-w-[80%] w-full overflow-y-auto scrollbar-none"
+                  className="h-full max-h-[80%] w-full max-w-[80%] overflow-y-auto scrollbar-none"
                   style={
                     {
                       "--scrollbar-thumb": `${anime.color}`,

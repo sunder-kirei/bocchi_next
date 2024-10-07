@@ -11,12 +11,12 @@ export function CharacterCard({ className, character, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "basis-96 max-w-full h-32 grow-0 shrink-0 shadow shadow-secondary rounded-md overflow-hidden flex",
+        "flex h-32 max-w-full shrink-0 grow-0 basis-96 overflow-hidden rounded-md shadow shadow-secondary",
         className,
       )}
       {...props}
     >
-      <div className="h-full w-20 relative">
+      <div className="relative h-full w-20">
         <Image
           src={character.image}
           alt="character"
@@ -36,7 +36,7 @@ export function CharacterCard({ className, character, ...props }: Props) {
 
         <span className="mt-auto text-secondary">{character.role}</span>
       </div>
-      <div className="w-20 h-full ml-auto relative">
+      <div className="relative ml-auto h-full w-20">
         <Image
           src={
             character.voiceActors?.length

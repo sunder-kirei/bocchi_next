@@ -16,7 +16,7 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
           : undefined
       }
       className={twMerge(
-        "basis-96 max-w-full grow-0 cursor-pointer shrink-0 shadow shadow-primary rounded-md overflow-hidden flex text-primary h-48",
+        "flex h-48 max-w-full shrink-0 grow-0 basis-96 cursor-pointer overflow-hidden rounded-md text-primary shadow shadow-primary",
         className,
       )}
       style={
@@ -29,7 +29,7 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
       }
       {...props}
     >
-      <div className="basis-32 grow-0 shrink-0 h-full relative">
+      <div className="relative h-full shrink-0 grow-0 basis-32">
         <Image
           src={relation.image}
           alt="image"
@@ -39,7 +39,7 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
       </div>
       <div className="data flex flex-col px-4 py-2">
         <span>{relation.relationType}</span>
-        <span className="text-foreground line-clamp-2">
+        <span className="line-clamp-2 text-foreground">
           {relation.title.userPreferred}
         </span>
         <span className="mt-auto flex gap-1">

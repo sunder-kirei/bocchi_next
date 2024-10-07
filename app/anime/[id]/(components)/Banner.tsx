@@ -12,39 +12,39 @@ export function Banner({ className, anime, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "w-full h-72 relative flex items-end justify-end p-2 gap-2 bg-black/30",
+        "relative flex h-72 w-full items-end justify-end gap-2 bg-black/30 p-2",
         className,
       )}
       {...props}
     >
-      <div className="absolute -z-10 w-full h-full top-0 left-0">
+      <div className="absolute left-0 top-0 -z-10 h-full w-full">
         <ImageWithFallback
           src={anime.cover}
           alt="cover"
-          className="object-cover object-center w-full h-full"
+          className="h-full w-full object-cover object-center"
         />
       </div>
       <div
         style={{
           backgroundColor: anime.color,
         }}
-        className="text-white px-4 py-2 w-fit rounded"
+        className="w-fit rounded px-4 py-2 text-white"
       >
         {anime.rating ? anime.rating / 10 : "Unrated"}
       </div>
       {anime.isAdult && (
-        <div className="text-white px-4 py-2 w-fit rounded bg-red-600">
+        <div className="w-fit rounded bg-red-600 px-4 py-2 text-white">
           NSFW
         </div>
       )}
       {anime.nextAiringEpisode && (
         <div
-          className="flex items-center absolute top-2 right-2 gap-x-2 px-4 py-2 rounded text-white"
+          className="absolute right-2 top-2 flex items-center gap-x-2 rounded px-4 py-2 text-white"
           style={{
             backgroundColor: anime.color,
           }}
         >
-          <div className="size-2 bg-red-500 rounded-full animate-pulse"></div>
+          <div className="size-2 animate-pulse rounded-full bg-red-500"></div>
           <span>
             {format(
               new Date(anime.nextAiringEpisode.airingTime * 1000),

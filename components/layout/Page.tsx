@@ -5,7 +5,7 @@ export function Page({ className, ...props }: HTMLAttributes<HTMLElement>) {
   return (
     <div
       className={twMerge(
-        "min-h-screen w-full h-fit p-4 sm:pl-20 pb-20 sm:pb-0 max-w-screen-2xl mx-auto",
+        "mx-auto h-fit min-h-screen w-full max-w-screen-2xl p-4 pb-20 sm:pb-0 sm:pl-20",
         className,
       )}
       {...props}

@@ -10,7 +10,7 @@ export function Summary({ className, anime, style, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "py-2 px-2 sm:px-4 sm:py-6 w-full flex flex-col h-fit",
+        "flex h-fit w-full flex-col px-2 py-2 sm:px-4 sm:py-6",
         className,
       )}
       style={{
@@ -19,10 +19,10 @@ export function Summary({ className, anime, style, ...props }: Props) {
       }}
       {...props}
     >
-      <span className="text-base sm:text-lg line-clamp-2">
+      <span className="line-clamp-2 text-base sm:text-lg">
         {anime.title.english || anime.title.romaji || anime.title.native}
       </span>
-      <div className="data flex flex-col gap-1 my-2">
+      <div className="data my-2 flex flex-col gap-1">
         <div className="flex items-center gap-1">
           <span className="w-full">Episodes:</span>
           <span className="w-full text-sm sm:text-base">
@@ -45,7 +45,7 @@ export function Summary({ className, anime, style, ...props }: Props) {
         {anime.genres.slice(0, 2).map((genre) => (
           <div
             key={genre}
-            className="px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm bg-primary rounded-full w-fit"
+            className="w-fit rounded-full bg-primary px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm"
           >
             {genre}
           </div>

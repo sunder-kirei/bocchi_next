@@ -35,36 +35,36 @@ export default async function WatchPage({
           />
           <div
             className={twMerge(
-              "sm:py-4 sm:px-6 p-2 w-full flex flex-col h-fit",
+              "flex h-fit w-full flex-col p-2 sm:px-6 sm:py-4",
             )}
             style={{
               color: anime.color,
             }}
           >
-            <span className="sm:text-lg text-base line-clamp-2">
+            <span className="line-clamp-2 text-base sm:text-lg">
               {anime.title.english}
             </span>
-            <div className="data flex flex-col gap-1 my-2">
+            <div className="data my-2 flex flex-col gap-1">
               <div className="flex items-center gap-1">
                 <span className="w-full">Episodes:</span>
-                <span className="w-full sm:text-base text-sm">
+                <span className="w-full text-sm sm:text-base">
                   {currentEpisode} / {anime.totalEpisodes}
                 </span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="w-full">Season:</span>
-                <span className="w-full sm:text-base text-sm">
+                <span className="w-full text-sm sm:text-base">
                   {anime.season} {anime.startDate.year}
                 </span>
               </div>
               {anime.nextAiringEpisode && (
                 <div
-                  className="flex items-center gap-x-2 sm:px-4 sm:py-2 p-2 rounded text-white w-fit"
+                  className="flex w-fit items-center gap-x-2 rounded p-2 text-white sm:px-4 sm:py-2"
                   style={{
                     backgroundColor: anime.color,
                   }}
                 >
-                  <div className="size-2 bg-red-500 rounded-full animate-pulse"></div>
+                  <div className="size-2 animate-pulse rounded-full bg-red-500"></div>
                   <span>
                     {format(
                       new Date(anime.nextAiringEpisode.airingTime * 1000),
@@ -79,7 +79,7 @@ export default async function WatchPage({
               {anime.genres.slice(0, 2).map((genre) => (
                 <div
                   key={genre}
-                  className="sm:px-4 sm:py-2 px-2 py-1 text-xs sm:text-sm bg-primary rounded-full w-fit"
+                  className="w-fit rounded-full bg-primary px-2 py-1 text-xs sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {genre}
                 </div>

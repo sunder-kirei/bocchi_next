@@ -19,7 +19,7 @@ export default async function Home() {
   return (
     <Page className="sm:px-0 sm:py-0">
       {trending.length && <RecentsCarousel recents={trending} />}
-      <main className="flex flex-col gap-y-4 mt-4 sm:pl-20 pl-0 pb-20 sm:pb-0">
+      <main className="mt-4 flex flex-col gap-y-4 pb-20 pl-0 sm:pb-0 sm:pl-20">
         {/* History */}
         <HistorySection />
         {/* Trending */}
@@ -28,20 +28,20 @@ export default async function Home() {
           {recent.map((anime) => (
             <Link key={anime.episodeId} href={`/anime/${anime.id}`}>
               <div
-                className="h-44 aspect-video bg-cover bg-center rounded relative"
+                className="relative aspect-video h-44 rounded bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${anime.image})`,
                 }}
               >
                 <div
-                  className="absolute w-full h-full top-0 left-0"
+                  className="absolute left-0 top-0 h-full w-full"
                   style={{
                     background: `linear-gradient(0deg, rgba(0,0,0,0.8016456582633054) 0%, rgba(255,255,255,0) 100%)`,
                   }}
                 >
-                  <div className="h-16 w-full absolute bottom-0 flex items-start gap-2 px-4 py-2">
+                  <div className="absolute bottom-0 flex h-16 w-full items-start gap-2 px-4 py-2">
                     <div
-                      className="line-clamp-2 overflow-ellipsis w-full font-bold"
+                      className="line-clamp-2 w-full overflow-ellipsis font-bold"
                       style={{
                         color: anime.color || "white",
                       }}
@@ -50,7 +50,7 @@ export default async function Home() {
                         anime.title.romaji ||
                         anime.title.native}
                     </div>
-                    <div className="w-1/4 font-semibold text-white text-center bg-accent rounded">
+                    <div className="w-1/4 rounded bg-accent text-center font-semibold text-white">
                       {anime.episodeNumber}
                     </div>
                   </div>

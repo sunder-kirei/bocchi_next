@@ -113,10 +113,10 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
 
   return (
     <div
-      className={twMerge("w-full h-full flex flex-col gap-y-4", className)}
+      className={twMerge("flex h-full w-full flex-col gap-y-4", className)}
       {...props}
     >
-      <div className="video_container w-full h-full relative">
+      <div className="video_container relative h-full w-full">
         <video
           ref={videoRef}
           className="aspect-video w-full rounded"
@@ -125,7 +125,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
         />
       </div>
 
-      <div className="quality flex flex-wrap gap-2 mx-auto">
+      <div className="quality mx-auto flex flex-wrap gap-2">
         {data.sources.map((s) => (
           <Button
             key={s.url}

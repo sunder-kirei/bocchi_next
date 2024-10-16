@@ -30,7 +30,7 @@ export function EpisodeList({
     Math.max(Math.floor((current - 1) / 100), 0),
   );
   const [search, setSearch] = useState<string>("");
-  const [episodes, setEpisodes] = useState(anime.episodes.reverse());
+  const [episodes, setEpisodes] = useState(anime.episodes);
 
   const pages = Math.ceil(anime.totalEpisodes / 100);
 

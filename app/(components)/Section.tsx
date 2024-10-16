@@ -24,10 +24,7 @@ export function Section({ className, children, ...props }: Props) {
   }
 
   return (
-    <section
-      className={twMerge("relative gap-4 overflow-hidden", className)}
-      {...props}
-    >
+    <section className={twMerge("relative gap-4 overflow-hidden")} {...props}>
       <Button
         size="icon"
         className="absolute left-4 top-1/2 z-10 hidden aspect-square w-fit -translate-y-1/2 place-items-center rounded-full bg-black/60 text-white hover:bg-black/90 sm:grid"
@@ -36,7 +33,10 @@ export function Section({ className, children, ...props }: Props) {
         <ChevronLeft />
       </Button>
       <div
-        className="flex flex-wrap justify-center gap-4 overflow-x-auto p-2 scrollbar-none scrollbar-track-transparent scrollbar-thumb-accent scrollbar-corner-transparent sm:flex-nowrap sm:justify-start"
+        className={twMerge(
+          "flex flex-wrap justify-center gap-4 overflow-x-auto p-2 scrollbar-none scrollbar-track-transparent scrollbar-thumb-accent scrollbar-corner-transparent sm:flex-nowrap sm:justify-start",
+          className,
+        )}
         ref={ref}
       >
         {children}

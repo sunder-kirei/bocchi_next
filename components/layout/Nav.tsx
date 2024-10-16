@@ -44,7 +44,7 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
 
       <nav
         className={twMerge(
-          "fixed bottom-0 z-10 flex h-16 w-full flex-row items-center justify-center gap-4 duration-500 sm:left-0 sm:top-0 sm:h-full sm:w-20 sm:flex-col",
+          "fixed bottom-0 z-10 flex h-16 w-full flex-row items-center justify-center gap-4 antialiased duration-500 sm:left-0 sm:top-0 sm:h-full sm:w-20 sm:flex-col",
           className,
         )}
         style={{

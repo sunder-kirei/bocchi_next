@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { Relation } from "@/types/api/info";
-import Image from "next/image";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -30,11 +30,10 @@ export function RelationCard({ className, style, relation, ...props }: Props) {
       {...props}
     >
       <div className="relative h-full shrink-0 grow-0 basis-32">
-        <Image
+        <img
           src={relation.image}
           alt="image"
-          fill={true}
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </div>
       <div className="data flex flex-col px-4 py-2">

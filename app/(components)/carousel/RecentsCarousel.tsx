@@ -159,7 +159,7 @@ export function RecentsCarousel({ className, recents, ...props }: Props) {
               {recents[selectedIndex].releaseDate || "Yet to be announced"}{" "}
               {"\u2022"} {recents[selectedIndex].type} {"\u2022"}{" "}
               {recents[selectedIndex].rating
-                ? recents[selectedIndex].rating
+                ? recents[selectedIndex].rating / 10
                 : "Unrated"}
             </div>
             {!isSM && (

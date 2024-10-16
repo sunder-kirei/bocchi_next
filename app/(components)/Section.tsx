@@ -25,24 +25,25 @@ export function Section({ className, children, ...props }: Props) {
 
   return (
     <section
-      ref={ref}
-      className={twMerge(
-        "relative flex flex-wrap justify-center gap-4 overflow-x-auto p-2 pb-4 scrollbar-none scrollbar-track-transparent scrollbar-thumb-accent scrollbar-corner-transparent sm:flex-nowrap sm:justify-start",
-        className,
-      )}
+      className={twMerge("relative gap-4 overflow-hidden", className)}
       {...props}
     >
       <Button
         size="icon"
-        className="sticky left-4 top-1/2 z-10 hidden h-fit -translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/90 sm:block"
+        className="absolute left-4 top-1/2 z-10 hidden h-fit -translate-y-1/2 rounded-full bg-black/60 p-2 text-white hover:bg-black/90 sm:block"
         onClick={handleScrollLeft}
       >
         <ChevronLeft />
       </Button>
-      {children}
+      <div
+        className="flex flex-wrap justify-center gap-4 overflow-x-auto p-2 scrollbar-none scrollbar-track-transparent scrollbar-thumb-accent scrollbar-corner-transparent sm:flex-nowrap sm:justify-start"
+        ref={ref}
+      >
+        {children}
+      </div>
       <Button
         size="icon"
-        className="sticky right-4 top-1/2 hidden h-fit -translate-y-1/2 rounded-full bg-black/20 p-2 text-white hover:bg-black/90 sm:block"
+        className="absolute right-4 top-1/2 hidden h-fit -translate-y-1/2 rounded-full bg-black/60 py-2 text-white hover:bg-black/90 sm:block"
         onClick={handleScrollRight}
       >
         <ChevronRight />

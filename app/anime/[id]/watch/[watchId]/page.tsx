@@ -2,7 +2,8 @@ import { Hero } from "@/app/anime/[id]/(components)/Hero";
 import { Page } from "@/components/layout/Page";
 import { fetchInfo } from "@/lib/query/fetchInfo";
 import { fetchWatch } from "@/lib/query/fetchWatch";
-import { format } from "date-fns";
+import { Play } from "lucide-react";
+import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 import { EpisodeList } from "../../(components)/EpisodeList";
 import { HLSPlayer } from "./(components)/HLSPlayer";
@@ -25,8 +26,8 @@ export default async function WatchPage({
         episodeID={watchId}
         episode={currentEpisode || 0}
       />
-      <main className="mt-4">
-        <div className="flex">
+      <main className="mt-4 h-full">
+        <div className="flex h-full">
           <Hero
             color={anime.color}
             image={anime.image}
@@ -34,9 +35,7 @@ export default async function WatchPage({
             id={anime.id}
           />
           <div
-            className={twMerge(
-              "flex h-fit w-full flex-col p-2 sm:px-6 sm:py-4",
-            )}
+            className={twMerge("flex w-full flex-col p-2 sm:px-6 sm:py-4")}
             style={{
               color: anime.color,
             }}
@@ -57,22 +56,6 @@ export default async function WatchPage({
                   {anime.season} {anime.startDate.year}
                 </span>
               </div>
-              {anime.nextAiringEpisode && (
-                <div
-                  className="flex w-fit items-center gap-x-2 rounded p-2 text-white sm:px-4 sm:py-2"
-                  style={{
-                    backgroundColor: anime.color,
-                  }}
-                >
-                  <div className="size-2 animate-pulse rounded-full bg-red-500"></div>
-                  <span>
-                    {format(
-                      new Date(anime.nextAiringEpisode.airingTime * 1000),
-                      "dd MMM hh:mm a",
-                    )}
-                  </span>
-                </div>
-              )}
             </div>
 
             <div className="flex flex-wrap gap-1 text-white">
@@ -85,7 +68,20 @@ export default async function WatchPage({
                 </div>
               ))}
             </div>
-          </div>{" "}
+
+            {anime.episodes.length > (currentEpisode ?? 0) && (
+              <Link
+                className="my-auto flex w-fit items-center justify-center gap-x-2 rounded p-2 text-white sm:px-4 sm:py-2"
+                style={{
+                  backgroundColor: anime.color,
+                }}
+                href={`/anime/${anime.id}/watch/${anime.episodes[currentEpisode ?? 0].id}`}
+              >
+                <Play size={14} />
+                Next Episode
+              </Link>
+            )}
+          </div>
         </div>
         <EpisodeList anime={anime} current={currentEpisode} />
       </main>

@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { Character } from "@/types/api/info";
-import Image from "next/image";
 import { HTMLAttributes } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -17,11 +17,11 @@ export function CharacterCard({ className, character, ...props }: Props) {
       {...props}
     >
       <div className="relative h-full w-20">
-        <Image
+        <img
           src={character.image}
           alt="character"
-          fill={true}
-          className="object-cover"
+          className="h-full w-full object-cover"
+          title="character-image"
         />
       </div>
       <div className="data flex flex-col gap-y-1 px-4 py-2">
@@ -37,15 +37,14 @@ export function CharacterCard({ className, character, ...props }: Props) {
         <span className="mt-auto text-secondary">{character.role}</span>
       </div>
       <div className="relative ml-auto h-full w-20">
-        <Image
+        <img
           src={
             character.voiceActors?.length
               ? character.voiceActors[0].image
               : "/404.png"
           }
-          fill={true}
           alt="va"
-          className="object-cover"
+          className="h-full w-full object-cover"
         />
       </div>
     </div>

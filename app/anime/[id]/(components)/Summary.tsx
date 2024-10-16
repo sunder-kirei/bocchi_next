@@ -27,7 +27,7 @@ export function Summary({ className, anime, style, ...props }: Props) {
           <span className="w-full">Episodes:</span>
           <span className="w-full text-sm sm:text-base">
             {anime.totalEpisodes && anime.totalEpisodes > 0
-              ? `${anime.currentEpisode} / ${anime.totalEpisodes}`
+              ? `${anime.currentEpisode ?? anime.totalEpisodes} / ${anime.totalEpisodes}`
               : "Not yet aired"}
           </span>
         </div>

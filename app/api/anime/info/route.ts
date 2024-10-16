@@ -9,6 +9,8 @@ export async function GET(req: NextRequest) {
       throw "id not found";
     }
     const res = await MetaProvider.fetchAnimeInfo(id);
+    res.totalEpisodes = res.totalEpisodes || (res.episodes?.length || 0);
+
     const data = {
       ...res,
       artwork: res.artwork?.slice(0, 20),

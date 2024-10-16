@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { SectionHeading } from "@/app/(components)/SectionHeading";
@@ -9,8 +10,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { AnimeInfo } from "@/types/api/info";
-import Image from "next/image";
-import { HTMLAttributes, useState } from "react";
+import { Search } from "lucide-react";
+import { HTMLAttributes, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLElement> {
@@ -28,13 +29,25 @@ export function EpisodeList({
   const [page, setPage] = useState(
     Math.max(Math.floor((current - 1) / 100), 0),
   );
+  const [search, setSearch] = useState<string>("");
+  const [episodes, setEpisodes] = useState(anime.episodes.reverse());
+
   const pages = Math.ceil(anime.totalEpisodes / 100);
+
+  useEffect(() => {
+    if (search == "") {
+      setEpisodes(anime.episodes.slice(page * 100, (page + 1) * 100).reverse());
+    } else {
+      const foundEpisode = anime.episodes.find((e) => e.number === +search);
+      setEpisodes(foundEpisode ? [foundEpisode] : []);
+    }
+  }, [search, page, anime.episodes]);
 
   return (
     <>
       <SectionHeading
         title="Episodes"
-        className={twMerge("mb-2 mt-4 w-full", className)}
+        className={twMerge("my-4 w-full justify-between gap-x-4", className)}
         {...props}
       >
         {anime.totalEpisodes > 100 && (
@@ -56,39 +69,53 @@ export function EpisodeList({
             </SelectContent>
           </Select>
         )}
+        <div className="flex items-center justify-center gap-x-2">
+          <label htmlFor="episode_search">
+            <Search className="size-4" />
+          </label>
+          <input
+            className="w-20 bg-transparent outline-none"
+            id="episode_search"
+            title="episode search"
+            placeholder="Search..."
+            value={search?.toString()}
+            onChange={(e) => {
+              const val = e.target.value;
+              if (val == "" || /[0-9]/.test(val)) {
+                setSearch(e.target.value);
+              }
+            }}
+          />
+        </div>
       </SectionHeading>
       <div className="episode-grid">
-        {anime.episodes
-          .slice(page * 100, (page + 1) * 100)
-          .reverse()
-          .map((episode) => (
-            <a
-              key={episode.id}
-              href={`/anime/${anime.id}/watch/${episode.id}`}
-              className={twMerge(
-                "flex h-20 w-full overflow-hidden rounded border",
-                current === episode.number && "ring ring-primary",
-              )}
-              style={
-                current === episode.number
-                  ? ({
-                      "--tw-shadow-color": anime.color,
-                      "--tw-shadow": "var(--tw-shadow-colored)",
-                    } as React.CSSProperties)
-                  : {}
-              }
-            >
-              <div className="relative aspect-[3/4] h-full">
-                <Image
-                  src={episode.image}
-                  alt="episode"
-                  fill={true}
-                  className="object-cover"
-                />
-              </div>
-              <div className="px-4 py-2 text-xl">Episode {episode.number}</div>
-            </a>
-          ))}
+        {episodes.map((episode) => (
+          <a
+            key={episode.id}
+            href={`/anime/${anime.id}/watch/${episode.id}`}
+            className={twMerge(
+              "flex h-20 w-full overflow-hidden rounded border",
+              current === episode.number && "ring ring-primary",
+            )}
+            style={
+              current === episode.number
+                ? ({
+                    "--tw-shadow-color": anime.color,
+                    "--tw-shadow": "var(--tw-shadow-colored)",
+                  } as React.CSSProperties)
+                : {}
+            }
+          >
+            <div className="relative aspect-[3/4] h-full">
+              <img
+                src={episode.image}
+                alt="episode"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="px-4 py-2 text-xl">Episode {episode.number}</div>
+          </a>
+        ))}
       </div>
     </>
   );

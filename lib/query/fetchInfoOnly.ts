@@ -4,7 +4,7 @@ export async function fetchInfoOnly(id: string) {
   const res = await fetch(
     process.env.NEXT_PUBLIC_API_URL + "/anime/infoonly?id=" + id,
     {
-      cache: "no-store"
+      cache: "no-store",
     },
   );
   const json = await res.json();

@@ -5,7 +5,7 @@ export async function fetchPopular() {
     const res = await fetch(
       process.env.NEXT_PUBLIC_API_URL + "/anime/popular",
       {
-        cache: "no-store"
+        cache: "no-store",
       },
     );
     const json = await res.json();

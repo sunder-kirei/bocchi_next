@@ -13,7 +13,9 @@ type Props = HTMLAttributes<HTMLElement> & {};
 
 export function HistorySection({ className, ...props }: Props) {
   const liveHistory = useLiveQuery(async () => {
-    const data = (await db.history.toArray()).filter((h) => !h.deleted);
+    const data = (await db.history.toArray())
+      .filter((h) => !h.deleted)
+      .sort((a, b) => b.timestamp.getUTCDate() - a.timestamp.getUTCDate());
     const promises = data.map((h) => fetchInfoOnly(h.animeID));
     const _animes = await Promise.all(promises);
     return _animes.map((anime) => {

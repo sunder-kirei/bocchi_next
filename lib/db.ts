@@ -6,7 +6,7 @@ interface WatchHistory {
   episodeID: string;
   episode: number;
   timestamp: Date;
-  deleted?: boolean
+  deleted?: boolean;
 }
 
 const db = new Dexie("myDB") as Dexie & {

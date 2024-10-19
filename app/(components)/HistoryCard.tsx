@@ -52,7 +52,7 @@ export function HistoryCard({
       <ConfirmationDialog />
       <Link
         className={twMerge(
-          "hover: flex h-36 overflow-hidden rounded ring-1 transition-all hover:scale-105",
+          "flex h-36 shrink-0 grow-0 overflow-hidden rounded ring-1 transition-all hover:scale-105",
           className,
         )}
         href={`/anime/${anime.id}`}
@@ -75,7 +75,7 @@ export function HistoryCard({
           className="h-full object-cover"
         />
         <div className="relative flex aspect-[4/3] flex-col p-2">
-          <span>{title}</span>
+          <span className="line-clamp-2 overflow-ellipsis">{title}</span>
           <span>
             Episode: {history.episode} / {anime.totalEpisodes}
           </span>
@@ -94,7 +94,7 @@ export function HistoryCard({
             size="icon"
             variant="ghost"
             onClick={handleDelete}
-            className="absolute bottom-2 right-2 z-10 rounded-full p-2 text-red-500 hover:bg-red-500"
+            className="absolute bottom-0 right-0 z-10 rounded-full p-2 text-red-500 hover:bg-red-500"
           >
             <Trash2 />
           </Button>

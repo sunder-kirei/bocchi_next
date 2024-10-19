@@ -6,6 +6,7 @@ interface WatchHistory {
   episodeID: string;
   episode: number;
   timestamp: Date;
+  deleted?: boolean
 }
 
 const db = new Dexie("myDB") as Dexie & {
@@ -27,6 +28,19 @@ db.version(2)
       .toCollection()
       .modify((h) => {
         h.timestamp = timestamp;
+      });
+  });
+
+db.version(3)
+  .stores({
+    history: "&animeID, &episodeID, episode, duration, timestamp, deleted",
+  })
+  .upgrade((t) => {
+    return t
+      .table("history")
+      .toCollection()
+      .modify((h) => {
+        h.deleted = false;
       });
   });
 

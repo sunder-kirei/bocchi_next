@@ -43,6 +43,7 @@ export const HLSPlayer: React.FC<HLSPlayerProps> = ({
           episode,
           episodeID,
           timestamp: new Date(),
+          deleted: false,
         });
         return dbID;
       } catch (err) {

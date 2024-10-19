@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { Nav } from "@/components/layout/Nav";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className={`font-primary antialiased`}>
         <Nav />
         {children}
+        <Toaster richColors />
       </body>
     </html>
   );

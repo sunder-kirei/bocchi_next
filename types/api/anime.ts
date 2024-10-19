@@ -15,6 +15,11 @@ export interface Anime {
     thumbnail: string;
     thumbnailHash: string;
   };
+  nextAiringEpisode?: {
+    airingTime: number;
+    timeUntilAiring: number;
+    episode: number;
+  };
   description: string;
   status: string;
   cover: string;

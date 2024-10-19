@@ -9,6 +9,6 @@ export async function fetchRecent() {
     return json.results as Recent[];
   } catch (err) {
     console.error(err);
-    return []
+    return [];
   }
 }

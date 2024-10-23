@@ -1,5 +1,3 @@
-import { Anime } from "@/types/api/anime";
-
 export async function fetchPopular() {
   try {
     const res = await fetch(
@@ -9,7 +7,7 @@ export async function fetchPopular() {
       },
     );
     const json = await res.json();
-    const data: Anime[] = json.results as unknown as Anime[];
+    const data = json.results;
     return data;
   } catch (err) {
     console.error(err);

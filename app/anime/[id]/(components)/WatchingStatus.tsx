@@ -34,6 +34,7 @@ export function WatchingStatus({ className, style, anime, ...props }: Props) {
         setIsLoading(false);
       });
   }, [anime.id]);
+
   return isLoading ? (
     <Skeleton className="mt-8 h-12 w-full" />
   ) : (
@@ -45,7 +46,9 @@ export function WatchingStatus({ className, style, anime, ...props }: Props) {
         className,
       )}
       style={{
-        backgroundColor: url ? anime.color : "grey",
+        backgroundColor: url
+          ? (anime.color ?? "hsl( 334 65.3% 80.8%)")
+          : "grey",
         ...style,
       }}
       {...props}

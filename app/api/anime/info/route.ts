@@ -4,11 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id");
+  const dub = req.nextUrl.searchParams.get("dub") === "true";
   try {
     if (!id) {
       throw "id not found";
     }
-    const res = await MetaProvider.fetchAnimeInfo(id);
+    const res = await MetaProvider.fetchAnimeInfo(id, dub);
     res.totalEpisodes = res.totalEpisodes || res.episodes?.length || 0;
 
     const data = {

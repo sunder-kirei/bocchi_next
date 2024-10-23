@@ -10,11 +10,13 @@ import { AnimeCard } from "./(components)/AnimeCard";
 import { HistorySection } from "./(components)/HistorySection";
 import { Section } from "./(components)/Section";
 import { SectionHeading } from "./(components)/SectionHeading";
+import { Recent } from "@/types/api/recent";
+import { Anime } from "@/types/api/anime";
 
 export default async function Home() {
-  const recent = await fetchRecent();
-  const trending = await fetchTrending();
-  const popular = await fetchPopular();
+  const recent: Recent[] = await fetchRecent();
+  const trending: Anime[] = await fetchTrending();
+  const popular: Anime[] = await fetchPopular();
 
   return (
     <>

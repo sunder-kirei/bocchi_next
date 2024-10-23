@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { AnchorHTMLAttributes, HTMLAttributes, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { AppCommandDialog } from "../CommandDialog";
-import { Button } from "../ui/button";
-import React from "react";
 
 function NavTile({
   className,
@@ -56,14 +54,10 @@ export function Nav({ className, ...props }: HTMLAttributes<HTMLElement>) {
           <img src="/logo.png" alt="bocchi_logo" className="w-full" />
         </Link>
 
-        <Button
-          variant="ghost"
-          className="rounded-full text-white/50 hover:bg-transparent hover:text-white"
-          size="icon"
+        <Search
           onClick={handleSearch}
-        >
-          <Search />
-        </Button>
+          className="size-10 cursor-pointer rounded-full p-2 text-white/50 hover:bg-transparent hover:text-white"
+        />
 
         <NavTile href="/" active={`${location}` === "/" || location === ""}>
           <House />

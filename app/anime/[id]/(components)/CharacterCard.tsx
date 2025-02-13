@@ -11,12 +11,19 @@ export function CharacterCard({ className, character, ...props }: Props) {
   return (
     <div
       className={twMerge(
-        "flex h-32 max-w-full shrink-0 grow-0 basis-96 overflow-hidden rounded-md shadow shadow-secondary",
+        "group flex h-fit max-w-full shrink-0 grow-0 flex-col items-center gap-1 overflow-hidden",
         className,
       )}
       {...props}
     >
-      <div className="relative h-full w-20">
+      <div
+        className="aspect-[12/16] h-44 w-full rounded-sm bg-cover bg-center shadow shadow-secondary"
+        style={{
+          backgroundImage: `url(${character.image})`,
+        }}
+      ></div>
+      <span>{character.name.userPreferred}</span>
+      {/* <div className="relative h-full w-20">
         <img
           src={character.image}
           alt="character"
@@ -46,7 +53,7 @@ export function CharacterCard({ className, character, ...props }: Props) {
           alt="va"
           className="h-full w-full object-cover"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

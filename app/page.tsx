@@ -3,18 +3,15 @@ export const revalidate = 3600;
 import { RecentsCarousel } from "@/app/(components)/carousel/RecentsCarousel";
 import { Page } from "@/components/layout/Page";
 import { fetchPopular } from "@/lib/query/fetchPopular";
-import { fetchRecent } from "@/lib/query/fetchRecent";
 import { fetchTrending } from "@/lib/query/fetchTrending";
-import Link from "next/link";
+import { Anime } from "@/types/api/anime";
 import { AnimeCard } from "./(components)/AnimeCard";
 import { HistorySection } from "./(components)/HistorySection";
 import { Section } from "./(components)/Section";
 import { SectionHeading } from "./(components)/SectionHeading";
-import { Recent } from "@/types/api/recent";
-import { Anime } from "@/types/api/anime";
 
 export default async function Home() {
-  const recent: Recent[] = await fetchRecent();
+  // const recent: Recent[] = await fetchRecent();
   const trending: Anime[] = await fetchTrending();
   const popular: Anime[] = await fetchPopular();
 
@@ -26,7 +23,7 @@ export default async function Home() {
           {/* History */}
           <HistorySection />
           {/* Trending */}
-          <SectionHeading title="Recents" />
+          {/* <SectionHeading title="Recents" />
           <Section className="flex-nowrap justify-start">
             {recent.map((anime) => (
               <Link key={anime.episodeId} href={`/anime/${anime.id}`}>
@@ -61,7 +58,7 @@ export default async function Home() {
                 </div>
               </Link>
             ))}
-          </Section>
+          </Section> */}
           {/* Popular */}
           <SectionHeading title="Popular" />
           <Section>
